@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 public class ActionUtil {
-    public static void clickAction(WebDriver driver) {
+    public static void clickAction(WebDriver driver, WebElement ele) {
         Actions act = new Actions(driver);
-        act.click().perform();
+        act.click(ele).perform();
     }
 
     public static void sendKeysAction(WebDriver driver, String str) {
