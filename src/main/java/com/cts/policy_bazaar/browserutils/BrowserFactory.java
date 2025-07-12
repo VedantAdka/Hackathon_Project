@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -29,12 +30,20 @@ public class BrowserFactory {
     }
 
     private static WebDriver runLocal(String bname) {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        EdgeOptions edgeOptions=new EdgeOptions();
+        chromeOptions.addArguments("--disable-notifications");
+        chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
+        chromeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
+        edgeOptions.addArguments("--disable-notifications");
+        edgeOptions.addArguments("--disable-blink-features=AutomationControlled");
+        edgeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
         switch (bname.intern().toLowerCase()) {
             case "chrome":
-                driver = new ChromeDriver();
+                driver = new ChromeDriver(chromeOptions);
                 break;
             case "edge":
-                driver = new EdgeDriver();
+                driver = new EdgeDriver(edgeOptions);
                 break;
             default:
                 ChromeOptions co = new ChromeOptions();
@@ -72,12 +81,20 @@ public class BrowserFactory {
     }
 
     public static WebDriver getBrowser(String bname, String url) {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        EdgeOptions edgeOptions=new EdgeOptions();
+        chromeOptions.addArguments("--disable-notifications");
+        chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
+        chromeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
+        edgeOptions.addArguments("--disable-notifications");
+        edgeOptions.addArguments("--disable-blink-features=AutomationControlled");
+        edgeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
         switch (bname.intern().toLowerCase()) {
             case "chrome":
-                driver = new ChromeDriver();
+                driver = new ChromeDriver(chromeOptions);
                 break;
             case "edge":
-                driver = new EdgeDriver();
+                driver = new EdgeDriver(edgeOptions);
                 break;
             default:
                 ChromeOptions co = new ChromeOptions();
@@ -92,12 +109,20 @@ public class BrowserFactory {
     }
 
     public static WebDriver getBrowser(String bname) {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        EdgeOptions edgeOptions=new EdgeOptions();
+        chromeOptions.addArguments("--disable-notifications");
+        chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
+        chromeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
+        edgeOptions.addArguments("--disable-notifications");
+        edgeOptions.addArguments("--disable-blink-features=AutomationControlled");
+        edgeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
         switch (bname.intern().toLowerCase()) {
             case "chrome":
-                driver = new ChromeDriver();
+                driver = new ChromeDriver(chromeOptions);
                 break;
             case "edge":
-                driver = new EdgeDriver();
+                driver = new EdgeDriver(edgeOptions);
                 break;
             default:
                 ChromeOptions co = new ChromeOptions();
