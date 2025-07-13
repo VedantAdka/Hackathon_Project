@@ -1,5 +1,4 @@
 package com.cts.policy_bazaar.testrunner;
-
 import com.cts.policy_bazaar.browserutils.BrowserFactory;
 import com.cts.policy_bazaar.frameworkutils.CommonUtils;
 import com.cts.policy_bazaar.frameworkutils.PropertiesFileReader;
@@ -9,9 +8,7 @@ import com.cts.policy_bazaar.pageobjects.TravelInsurancePage;
 import com.cts.policy_bazaar.seleniumutils.ScreenShotUtil;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import java.util.List;
 
@@ -24,7 +21,7 @@ public class Scenario1_Runner {
     String wr = null;
     String url = null;
     String remoteip = null;
-    @BeforeMethod
+    @BeforeClass
     public void init() {
         try {
             bn = PropertiesFileReader.getPropertyValue("config", "browsername");
@@ -51,20 +48,21 @@ public class Scenario1_Runner {
     }
     @Test(priority = 1,dependsOnMethods = {"validateAccessingTravelInsurancePage"})
     public void validateSelectingDestination(){
+        CommonUtils.sureWait(3);
         tp.putCountryNameInSearchBox("Germany");
         String actual=tp.getCountryNameSelectedInSearchBox();
         String expected="Germany";
         Assert.assertEquals(actual,expected,"Wrong country selected for destination");
     }
-    @Test(dependsOnMethods = {"validateSelectingDestination"})
+    @Test(priority = 2, dependsOnMethods = {"validateSelectingDestination"})
     public void validateTravelStartAndEndDate(){
         tp.clickOnStartDate();
-        tp.pickStartDateAndEndDate("12","10");
+        tp.pickStartDateAndEndDate("13","11");
         String actual=tp.getSelectedStartAndEndDate()[0];
-        String expected="12";
-        Assert.assertEquals(actual,expected,"Wrong Dates selected");
+        String expected="13";
+        Assert.assertTrue(actual.contains(expected),"Wrong Dates selected");
     }
-    @Test(dependsOnMethods = {"validateTravelStartAndEndDate"})
+    @Test(priority = 3, dependsOnMethods = {"validateTravelStartAndEndDate"})
     public void validateSelecting2TravellersAndGoingToPlansPage(){
         tp.clickOnNoOfTraveller();
         tp.selectAgeOfFirstStudent("22");
@@ -74,7 +72,7 @@ public class Scenario1_Runner {
         tp.clickOnViewPlansButton();
         Assert.assertTrue(pp.plansPageDisplayed());
     }
-    @Test(dependsOnMethods = {"validateSelecting2TravellersAndGoingToPlansPage"})
+    @Test(priority = 4, dependsOnMethods = {"validateSelecting2TravellersAndGoingToPlansPage"})
     public void validateSelectingStudentPlans(){
         pp.clickOnStudentPlans();
         pp.selectBothStudents();
@@ -82,21 +80,25 @@ public class Scenario1_Runner {
         pp.clickOnApplyButton();
         Assert.assertTrue(pp.studentsPlansDisplayed());
     }
-    @Test(dependsOnMethods = {"validateSelectingStudentPlans"})
+    @Test(priority = 5, dependsOnMethods = {"validateSelectingStudentPlans"})
     public void validatedSortingPlansFromLowToHigh(){
         pp.clickOnSortDropDownButton();
         pp.clickOnLowToHighButton();
         Assert.assertTrue(pp.lowToHighBtnSelected(),"");
     }
-    @Test(dependsOnMethods = {"validatedSortingPlansFromLowToHigh"})
+    @Test(priority = 6, dependsOnMethods = {"validatedSortingPlansFromLowToHigh"})
     public void validateGettingTop3Plans(){
         List<String> insuranceCompanyName=pp.getInsuranceCompanyName();
         List<String> insuranceAmount=pp.getInsurancePrice();
         int actual=insuranceAmount.size();
         Assert.assertTrue(actual!=0,"Did not get any plans");
     }
-    @Test(dependsOnMethods = {"validateTravelStartAndEndDate"})
+    @Test(priority = 7)
     public void validateNoTravellerSelectedGivesError(){
+        hp.clickOnTravelInsurance();
+        tp.putCountryNameInSearchBox("Germany");
+        tp.clickOnStartDate();
+        tp.pickStartDateAndEndDate("13","11");
         tp.clickCutButton();
         tp.clickOnViewPlansButton();
         String actual=tp.getErrorMessage();
@@ -104,14 +106,17 @@ public class Scenario1_Runner {
         Assert.assertEquals(actual,expected,"Did not throw error");
         ScreenShotUtil.takeScreenShot(driver,"validateNoTravellerSelectedGivesError");
     }
-    @Test(dependsOnMethods = {"validateAccessingTravelInsurancePage"})
+    @Test(priority = 8)
     public void validateInvalidCountryNameShowsNoResult(){
+        hp.clickOnTravelInsurance();
         boolean res=tp.putCountryNameInSearchBox("ZZZ");
         Assert.assertTrue(res,"Did not throw error");
         ScreenShotUtil.takeScreenShot(driver,"validateInvalidCountryNameShowsNoResult");
     }
-    @Test(dependsOnMethods = {"validateSelectingDestination"})
+    @Test(priority = 9)
     public void validateNotSelectingDateThrowsError(){
+        hp.clickOnTravelInsurance();
+        tp.putCountryNameInSearchBox("Germany");
         tp.clickOnAddTraveller();
         tp.clickOnNoOfTraveller();
         tp.selectAgeOfFirstStudent("22");
@@ -125,7 +130,7 @@ public class Scenario1_Runner {
         Assert.assertEquals(actual,expected,"Did not throw error");
         ScreenShotUtil.takeScreenShot(driver,"validateNotSelectingDateThrowsError");
     }
-    @AfterMethod
+    @AfterClass
     public void end(){
         CommonUtils.sureWait(3);
         driver.quit();

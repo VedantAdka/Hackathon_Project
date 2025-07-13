@@ -4,6 +4,7 @@ import com.cts.policy_bazaar.frameworkutils.CommonUtils;
 import com.cts.policy_bazaar.seleniumutils.ActionUtil;
 import com.cts.policy_bazaar.seleniumutils.JavaScriptUtil;
 import com.cts.policy_bazaar.seleniumutils.Waits;
+import io.cucumber.java.en_old.Ac;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -46,7 +47,7 @@ public class TravelInsurancePage extends BasePage{
     private WebElement noButton;
     @FindBy(xpath = "//button[text()='Done']")
     private WebElement submitButton;
-    @FindBy(className = ".pqCtaWrapper>button")
+    @FindBy(xpath = "//div[@class='pqCtaWrapper']/button")
     private WebElement viewButton;
     @FindBy(xpath = "//span[@class='errorMsg newPq_errorMsg']")
     private WebElement errorMessage;
@@ -90,7 +91,8 @@ public class TravelInsurancePage extends BasePage{
                 break;
             }
         }
-        Waits.waitElementToBeClickable(driver,doneButton,30);
+        CommonUtils.sureWait(2);
+        Waits.waitElementToBeClickable(driver,doneButton,30).click();
     }
     public String[] getSelectedStartAndEndDate(){
         String[] str={selectedStartDate.getText(),selectedEndDate.getText()};
@@ -100,13 +102,17 @@ public class TravelInsurancePage extends BasePage{
         addTravellerButton.click();
     }
     public void clickOnNoOfTraveller(){
-        Waits.waitElementToBeClickable(driver,noOfTraveller,30);
+        CommonUtils.sureWait(3);
+        ActionUtil.moveToElementAction(driver,noOfTraveller);
+        ActionUtil.clickAction(driver,noOfTraveller);
+//        Waits.waitElementToBeClickable(driver,noOfTraveller,30).click();
     }
     public void selectAgeOfFirstStudent(String age1){
         ageOfTraveller1DropDownButton.click();
         for (WebElement age : ageList) {
             if (age.getText().contains(age1)) {
                 age.click();
+                CommonUtils.sureWait(2);
                 break;
             }
         }
@@ -117,18 +123,22 @@ public class TravelInsurancePage extends BasePage{
         for (WebElement age : ageList) {
             if (age.getText().contains(age2)) {
                 age.click();
+                CommonUtils.sureWait(2);
                 break;
             }
         }
     }
     public void clickOnNoButton(){
         noButton.click();
+        CommonUtils.sureWait(2);
     }
     public void clickOnSubmitButton(){
         submitButton.click();
+        CommonUtils.sureWait(2);
     }
     public void clickOnViewPlansButton(){
         JavaScriptUtil.JSscrollToElement(viewButton,driver);
+        CommonUtils.sureWait(2);
         JavaScriptUtil.JSclick(viewButton,driver);
     }
     public String getErrorMessage(){
