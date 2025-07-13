@@ -54,7 +54,7 @@ public class TravelInsurancePage extends BasePage{
     public TravelInsurancePage(WebDriver driver){
         super(driver);
     }
-    public void putCountryNameInSearchBox(String countryName){
+    public boolean putCountryNameInSearchBox(String countryName){
         ActionUtil.moveToElementAction(driver,searchBox);
         ActionUtil.clickAction(driver,searchBox);
         ActionUtil.sendKeysAction(driver,countryName);
@@ -63,7 +63,11 @@ public class TravelInsurancePage extends BasePage{
                 e.click();
                 break;
             }
+            else if(e.getText().equalsIgnoreCase("No result found")){
+                return false;
+            }
         }
+        return true;
     }
     public String getCountryNameSelectedInSearchBox(){
         return countrySelected.getText();
