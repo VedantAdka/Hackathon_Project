@@ -16,6 +16,8 @@ public class TravelInsurancePage extends BasePage{
     private WebElement searchBox;
     @FindBy(xpath = "//ul[@class='search-list']/li")
     private List<WebElement> countryList;
+    @FindBy(xpath = "//div[@class='selectedCountryWrap']/p")
+    private WebElement countrySelected;
     @FindBy(xpath = "//article[@class='newPq_duration_wrap']//div[1]")
     private WebElement startDate;
     @FindBy(xpath = "//div[@class='MuiPickersDesktopDateRangeCalendar-root']/div[1]//div[@class='MuiPickersDateRangeDay-root']/div/button")
@@ -24,8 +26,14 @@ public class TravelInsurancePage extends BasePage{
     private List<WebElement> date2List;
     @FindBy(xpath = "//*[@id=\"modal-root\"]/section/article/div/div/div[2]/div[3]/div/button")
     private WebElement doneButton;
+    @FindBy(xpath = "//div[@class='newPq_duration_wrap__dateCol'][1]/p/em")
+    private WebElement selectedStartDate;
+    @FindBy(xpath = "//div[@class='newPq_duration_wrap__dateCol'][2]/p/em")
+    private WebElement selectedEndDate;
     @FindBy(xpath = "//section/section[2]/article[3]")
     private WebElement addTravellerButton;
+    @FindBy(xpath = "//a[@class='newPq_modal__close']")
+    private WebElement cutButton;
     @FindBy(xpath = "//div/label[@for='traveller_2']")
     private WebElement noOfTraveller;
     @FindBy(xpath = "//div[@id='0']/div[@id=\"divarrow_undefined\"]/div")
@@ -40,11 +48,13 @@ public class TravelInsurancePage extends BasePage{
     private WebElement submitButton;
     @FindBy(className = ".pqCtaWrapper>button")
     private WebElement viewButton;
+    @FindBy(xpath = "//span[@class='errorMsg newPq_errorMsg']")
+    private WebElement errorMessage;
 
     public TravelInsurancePage(WebDriver driver){
         super(driver);
     }
-    public void putCountryNameInSearchBox(String countryName){
+    public boolean putCountryNameInSearchBox(String countryName){
         ActionUtil.moveToElementAction(driver,searchBox);
         ActionUtil.clickAction(driver,searchBox);
         ActionUtil.sendKeysAction(driver,countryName);
@@ -53,7 +63,14 @@ public class TravelInsurancePage extends BasePage{
                 e.click();
                 break;
             }
+            else if(e.getText().equalsIgnoreCase("No result found")){
+                return false;
+            }
         }
+        return true;
+    }
+    public String getCountryNameSelectedInSearchBox(){
+        return countrySelected.getText();
     }
     public void clickOnStartDate(){
         startDate.click();
@@ -73,9 +90,11 @@ public class TravelInsurancePage extends BasePage{
                 break;
             }
         }
-    }
-    public void clickOnDoneButton(){
         Waits.waitElementToBeClickable(driver,doneButton,30);
+    }
+    public String[] getSelectedStartAndEndDate(){
+        String[] str={selectedStartDate.getText(),selectedEndDate.getText()};
+        return str;
     }
     public void clickOnAddTraveller(){
         addTravellerButton.click();
@@ -112,6 +131,12 @@ public class TravelInsurancePage extends BasePage{
         JavaScriptUtil.JSscrollToElement(viewButton,driver);
         JavaScriptUtil.JSclick(viewButton,driver);
     }
-
+    public String getErrorMessage(){
+        return errorMessage.getText();
+    }
+    public void clickCutButton(){
+        ActionUtil.moveToElementAction(driver,cutButton);
+        ActionUtil.clickAction(driver,cutButton);
+    }
 
 }
