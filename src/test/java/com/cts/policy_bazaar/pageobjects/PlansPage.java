@@ -3,6 +3,7 @@ package com.cts.policy_bazaar.pageobjects;
 import com.cts.policy_bazaar.frameworkutils.CommonUtils;
 import com.cts.policy_bazaar.seleniumutils.ActionUtil;
 import com.cts.policy_bazaar.seleniumutils.SelectUtils;
+import com.cts.policy_bazaar.seleniumutils.Waits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -56,6 +57,8 @@ public class PlansPage extends BasePage {
     }
 
     public void selectTripDuration(String duration) {
+        Waits.waitElementToBeClickable(driver,durationDropDown,30);
+        ActionUtil.moveToElementAction(driver,durationDropDown);
         SelectUtils.selectFromText(durationDropDown, duration);
         CommonUtils.sureWait(1);
     }

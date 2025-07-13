@@ -7,12 +7,14 @@ import com.cts.policy_bazaar.pageobjects.HomePage;
 import com.cts.policy_bazaar.pageobjects.PlansPage;
 import com.cts.policy_bazaar.pageobjects.TravelInsurancePage;
 import com.cts.policy_bazaar.seleniumutils.ScreenShotUtil;
+import com.cts.policy_bazaar.testlistener.MyListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.List;
 
+@Listeners(MyListener.class)
 public class Scenario1_Runner {
     public static WebDriver driver;
     HomePage hp=null;
@@ -47,7 +49,7 @@ public class Scenario1_Runner {
         String expected=hp.getTitle();
         Assert.assertEquals(actual,expected,"Title does not match");
     }
-    @Test(dataProvider = "excelTestData",dataProviderClass = ReadAndWriteFromExcel.class,priority = 1)
+    @Test(priority = 1,dataProvider = "excelTestData",dataProviderClass = ReadAndWriteFromExcel.class)
     public void validateSelectingDestination(String country){
         CommonUtils.sureWait(3);
         tp.putCountryNameInSearchBox(country);

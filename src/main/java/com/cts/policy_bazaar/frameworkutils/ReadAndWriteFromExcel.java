@@ -34,7 +34,7 @@ public class ReadAndWriteFromExcel {
     @DataProvider(name = "excelTestData")
     public static String[][] readData(Method testName) {
         ArrayList<String[]> res = new ArrayList<>();
-        try (FileInputStream file = new FileInputStream("C:\\Users\\2408439\\CTS_Java_Training\\Practicals\\IntelliJ_Selenium_Projects\\Hackathon_Project\\testdata\\Scenario1_TestData.xlsx")) {
+        try (FileInputStream file = new FileInputStream("testdata/Scenario1_TestData.xlsx")) {
             XSSFWorkbook wb = new XSSFWorkbook(file);
             XSSFSheet s = wb.getSheetAt(0);
             int noOfRows = s.getPhysicalNumberOfRows();
