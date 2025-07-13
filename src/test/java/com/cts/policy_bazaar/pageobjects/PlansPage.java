@@ -1,6 +1,9 @@
 package com.cts.policy_bazaar.pageobjects;
 
+import com.cts.policy_bazaar.frameworkutils.CommonUtils;
+import com.cts.policy_bazaar.seleniumutils.ActionUtil;
 import com.cts.policy_bazaar.seleniumutils.SelectUtils;
+import com.cts.policy_bazaar.seleniumutils.Waits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,16 +45,22 @@ public class PlansPage extends BasePage {
         return showPlansText.isDisplayed();
     }
     public void clickOnStudentPlans() {
-        studentPlanButton.click();
+        ActionUtil.moveToElementAction(driver,studentPlanButton);
+        ActionUtil.clickAction(driver,studentPlanButton);
+        CommonUtils.sureWait(1);
     }
 
     public void selectBothStudents() {
         student1.click();
         student2.click();
+        CommonUtils.sureWait(1);
     }
 
     public void selectTripDuration(String duration) {
+        Waits.waitElementToBeClickable(driver,durationDropDown,30);
+        ActionUtil.moveToElementAction(driver,durationDropDown);
         SelectUtils.selectFromText(durationDropDown, duration);
+        CommonUtils.sureWait(1);
     }
 
     public void clickOnApplyButton() {
@@ -64,10 +73,12 @@ public class PlansPage extends BasePage {
 
     public void clickOnSortDropDownButton() {
         sortButton.click();
+        CommonUtils.sureWait(1);
     }
 
     public void clickOnLowToHighButton() {
         lowToHighButton.click();
+        CommonUtils.sureWait(1);
     }
 
     public boolean lowToHighBtnSelected(){

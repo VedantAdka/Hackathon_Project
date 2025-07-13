@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ReadAndWriteFromExcel {
     public static void writeLinksData(List<String> data) {
-        try (FileOutputStream file = new FileOutputStream("testdata/excel_data.xlsx")) {
+        try (FileOutputStream file = new FileOutputStream("C:\\Users\\2408439\\CTS_Java_Training\\Practicals\\IntelliJ_Selenium_Projects\\Hackathon_Project\\testdata\\Scenario1_TestData.xlsx")) {
             XSSFWorkbook wb = new XSSFWorkbook();
             XSSFSheet sheet = wb.createSheet("data1");
             int size = data.size();
@@ -34,7 +34,7 @@ public class ReadAndWriteFromExcel {
     @DataProvider(name = "excelTestData")
     public static String[][] readData(Method testName) {
         ArrayList<String[]> res = new ArrayList<>();
-        try (FileInputStream file = new FileInputStream("testdata/TestData.xlsx")) {
+        try (FileInputStream file = new FileInputStream("testdata/Scenario1_TestData.xlsx")) {
             XSSFWorkbook wb = new XSSFWorkbook(file);
             XSSFSheet s = wb.getSheetAt(0);
             int noOfRows = s.getPhysicalNumberOfRows();
