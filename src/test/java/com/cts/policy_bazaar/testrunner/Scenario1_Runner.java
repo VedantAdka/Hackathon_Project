@@ -149,6 +149,8 @@ public class Scenario1_Runner {
         pp.clickOnLowToHighButton();
         List<String> insuranceCompanyName=pp.getInsuranceCompanyName();
         List<String> insuranceAmount=pp.getInsurancePrice();
+        ReadAndWriteFromExcel.writeDataForScenario1(insuranceCompanyName,"Company Name",0);
+        ReadAndWriteFromExcel.writeDataForScenario1(insuranceAmount,"Insurance Amount",1);
         int actual=insuranceAmount.size();
         Assert.assertTrue(actual!=0,"Did not get any plans");
     }

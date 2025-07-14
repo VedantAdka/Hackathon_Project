@@ -6,6 +6,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.DataProvider;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -14,27 +15,80 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReadAndWriteFromExcel {
-    public static void writeLinksData(List<String> data) {
-        try (FileOutputStream file = new FileOutputStream("C:\\Users\\2408439\\CTS_Java_Training\\Practicals\\IntelliJ_Selenium_Projects\\Hackathon_Project\\testdata\\Scenario1_TestData.xlsx")) {
-            XSSFWorkbook wb = new XSSFWorkbook();
-            XSSFSheet sheet = wb.createSheet("data1");
-            int size = data.size();
-            XSSFRow first_row = sheet.createRow(0);
-            first_row.createCell(0).setCellValue("Links");
-            for (int i = 1; i <= size; i++) {
-                XSSFRow row = sheet.createRow(i);
-                row.createCell(0).setCellValue(data.get(i - 1));
+    public static void writeDataForScenario1(List<String> data, String colName, int colNo) {
+        File filePath=new File("testdata/TestData_Scenario1.xlsx");
+        XSSFWorkbook wb;
+        XSSFSheet sheet;
+        try {
+            if(filePath.exists()){
+                FileInputStream fis=new FileInputStream(filePath);
+                wb=new XSSFWorkbook(fis);
+                sheet= wb.getSheet("data1");
+                fis.close();
+            }else{
+                wb=new XSSFWorkbook();
+                sheet=wb.createSheet("data1");
             }
-            wb.write(file);
+            int size = data.size();
+            XSSFRow first_row = sheet.getRow(0);
+            if(first_row==null){
+                first_row=sheet.createRow(0);
+            }
+            first_row.createCell(colNo).setCellValue(colName);
+            for (int i = 1; i <= size; i++) {
+                XSSFRow row = sheet.getRow(i);
+                if(row==null){
+                    row=sheet.createRow(i);
+                }
+                row.createCell(colNo).setCellValue(data.get(i - 1));
+            }
+            FileOutputStream fileOut=new FileOutputStream(filePath);
+            wb.write(fileOut);
+            fileOut.close();
+            wb.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
+    public static void writeDataForScenario3(List<String> data, String colName, int colNo) {
+        File filePath=new File("testdata/TestData_Scenario2.xlsx");
+        XSSFWorkbook wb;
+        XSSFSheet sheet;
+        try {
+            if(filePath.exists()){
+                FileInputStream fis=new FileInputStream(filePath);
+                wb=new XSSFWorkbook(fis);
+                sheet= wb.getSheet("data1");
+                fis.close();
+            }else{
+                wb=new XSSFWorkbook();
+                sheet=wb.createSheet("data1");
+            }
+            int size = data.size();
+            XSSFRow first_row = sheet.getRow(0);
+            if(first_row==null){
+                first_row=sheet.createRow(0);
+            }
+            first_row.createCell(colNo).setCellValue(colName);
+            for (int i = 1; i <= size; i++) {
+                XSSFRow row = sheet.getRow(i);
+                if(row==null){
+                    row=sheet.createRow(i);
+                }
+                row.createCell(colNo).setCellValue(data.get(i - 1));
+            }
+            FileOutputStream fileOut=new FileOutputStream(filePath);
+            wb.write(fileOut);
+            fileOut.close();
+            wb.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @DataProvider(name = "excelTestData")
     public static String[][] readData(Method testName) {
         ArrayList<String[]> res = new ArrayList<>();
-        try (FileInputStream file = new FileInputStream("testdata/Scenario1_TestData.xlsx")) {
+        try (FileInputStream file = new FileInputStream("testdata/Scenario_TestData.xlsx")) {
             XSSFWorkbook wb = new XSSFWorkbook(file);
             XSSFSheet s = wb.getSheetAt(0);
             int noOfRows = s.getPhysicalNumberOfRows();
