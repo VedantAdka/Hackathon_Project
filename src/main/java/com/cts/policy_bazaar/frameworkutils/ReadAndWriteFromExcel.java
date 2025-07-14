@@ -88,7 +88,7 @@ public class ReadAndWriteFromExcel {
     @DataProvider(name = "excelTestData")
     public static String[][] readData(Method testName) {
         ArrayList<String[]> res = new ArrayList<>();
-        try (FileInputStream file = new FileInputStream("testdata/Scenario_TestData.xlsx")) {
+        try (FileInputStream file = new FileInputStream("testdata/Scenario3_TestData.xlsx")) {
             XSSFWorkbook wb = new XSSFWorkbook(file);
             XSSFSheet s = wb.getSheetAt(0);
             int noOfRows = s.getPhysicalNumberOfRows();
