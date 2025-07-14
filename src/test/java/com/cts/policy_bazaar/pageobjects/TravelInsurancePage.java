@@ -85,14 +85,14 @@ public class TravelInsurancePage extends BasePage{
         CommonUtils.sureWait(2);
         for (WebElement e : date1List) {
             if (e.getText().equalsIgnoreCase(start)) {
-                e.click();
+                Waits.waitElementToBeClickable(driver,e,30).click();
                 break;
             }
         }
         CommonUtils.sureWait(2);
         for (WebElement e : date2List) {
             if (e.getText().equalsIgnoreCase(end)) {
-                e.click();
+                Waits.waitElementToBeClickable(driver,e,30).click();
                 break;
             }
         }

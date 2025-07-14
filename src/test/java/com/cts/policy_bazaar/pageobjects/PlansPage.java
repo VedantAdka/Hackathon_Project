@@ -45,6 +45,7 @@ public class PlansPage extends BasePage {
         return showPlansText.isDisplayed();
     }
     public void clickOnStudentPlans() {
+        CommonUtils.sureWait(2);
         ActionUtil.moveToElementAction(driver,studentPlanButton);
         ActionUtil.clickAction(driver,studentPlanButton);
         CommonUtils.sureWait(1);
@@ -52,6 +53,7 @@ public class PlansPage extends BasePage {
 
     public void selectBothStudents() {
         student1.click();
+        CommonUtils.sureWait(1);
         student2.click();
         CommonUtils.sureWait(1);
     }
