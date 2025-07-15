@@ -8,13 +8,14 @@ import com.cts.policy_bazaar.pageobjects.HealthInsurancePage;
 import com.cts.policy_bazaar.pageobjects.HomePage;
 import com.cts.policy_bazaar.seleniumutils.ScreenShotUtil;
 import com.cts.policy_bazaar.testlistener.MyListener;
+import com.cts.policy_bazaar.testlistener.MyListenerCombined;
 import com.cts.policy_bazaar.testlistener.MyListenerScenario3;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.List;
-@Listeners(MyListenerScenario3.class)
+@Listeners(MyListenerCombined.class)
 public class Scenario3_Runner {
 
     public static WebDriver driver;

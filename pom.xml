@@ -108,7 +108,7 @@
         <version>3.5.3</version>
         <configuration>
           <suiteXmlFiles>
-            <suiteXmlFile>testngrunner/testngrunner.xml</suiteXmlFile>
+            <suiteXmlFile>testngrunnerxml/testngrunner1.xml</suiteXmlFile>
           </suiteXmlFiles>
         </configuration>
       </plugin>

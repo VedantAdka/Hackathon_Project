@@ -17,6 +17,8 @@ public class PlansPage extends BasePage {
 
     @FindBy(xpath = "//section[2]/p[@class='newFilterSection__heading']")
     private WebElement showPlansText;
+    @FindBy(xpath = "//section[@class='newFilterSection filters']/details[1]/summary")
+    private WebElement plansDropDownButton;
     @FindBy(id = "studentTrip")
     private WebElement studentPlanButton;
     @FindBy(xpath = "//div[@class='options_box_wrapper ageOptions']/div[1]/input")
@@ -46,11 +48,23 @@ public class PlansPage extends BasePage {
         return showPlansText.isDisplayed();
     }
     public void clickOnStudentPlans() {
-        CommonUtils.sureWait(2);
-        ActionUtil.moveToElementAction(driver,studentPlanButton);
-        Waits.waitElementToBeClickable(driver,studentPlanButton,30);
-        ActionUtil.clickAction(driver,studentPlanButton);
-        CommonUtils.sureWait(1);
+        if(studentPlanButton.isDisplayed()) {
+            CommonUtils.sureWait(2);
+            ActionUtil.moveToElementAction(driver, studentPlanButton);
+            Waits.waitElementToBeClickable(driver, studentPlanButton, 30);
+            ActionUtil.clickAction(driver, studentPlanButton);
+            CommonUtils.sureWait(1);
+        }
+        else{
+            CommonUtils.sureWait(2);
+            ActionUtil.moveToElementAction(driver, plansDropDownButton);
+            Waits.waitElementToBeClickable(driver,plansDropDownButton,30).click();
+            CommonUtils.sureWait(2);
+            ActionUtil.moveToElementAction(driver, studentPlanButton);
+            Waits.waitElementToBeClickable(driver, studentPlanButton, 30);
+            ActionUtil.clickAction(driver, studentPlanButton);
+            CommonUtils.sureWait(1);
+        }
     }
 
     public void selectBothStudents() {

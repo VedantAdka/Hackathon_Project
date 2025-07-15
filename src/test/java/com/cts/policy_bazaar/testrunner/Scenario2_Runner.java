@@ -6,11 +6,12 @@ import com.cts.policy_bazaar.frameworkutils.ReadAndWriteFromExcel;
 import com.cts.policy_bazaar.pageobjects.*;
 import com.cts.policy_bazaar.testlistener.MyListener;
 import com.cts.policy_bazaar.seleniumutils.ScreenShotUtil;
+import com.cts.policy_bazaar.testlistener.MyListenerCombined;
 import com.cts.policy_bazaar.testlistener.MyListenerScenario2;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-@Listeners(MyListenerScenario2.class)
+@Listeners(MyListenerCombined.class)
 public class Scenario2_Runner {
 
     public static WebDriver driver;
@@ -45,6 +46,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
+            ScreenShotUtil.takeScreenShot(driver,"accessCarInsurancePage");
             Assert.fail(e.getMessage());
         }
     }
@@ -58,6 +60,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
+            ScreenShotUtil.takeScreenShot(driver,"clickWithoutCarNumber");
             Assert.fail(e.getMessage());
         }
     }
@@ -72,6 +75,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
+            ScreenShotUtil.takeScreenShot(driver,"selectCity");
             Assert.fail(e.getMessage());
         }
     }
@@ -87,6 +91,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
+            ScreenShotUtil.takeScreenShot(driver,"selectBrand");
             Assert.fail(e.getMessage());
         }
     }
@@ -103,6 +108,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
+            ScreenShotUtil.takeScreenShot(driver,"selectCarModel");
             Assert.fail(e.getMessage());
         }
     }
@@ -120,6 +126,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
+            ScreenShotUtil.takeScreenShot(driver,"selectFuelType");
             Assert.fail(e.getMessage());
         }
     }
@@ -138,6 +145,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
+            ScreenShotUtil.takeScreenShot(driver,"selectVariant");
             Assert.fail(e.getMessage());
         }
     }
@@ -161,6 +169,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
+            ScreenShotUtil.takeScreenShot(driver,"invalidPhoneCheck");
             Assert.fail(e.getMessage());
         }
     }

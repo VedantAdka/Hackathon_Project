@@ -9,6 +9,7 @@ import com.cts.policy_bazaar.pageobjects.PlansPage;
 import com.cts.policy_bazaar.pageobjects.TravelInsurancePage;
 import com.cts.policy_bazaar.testlistener.MyListener;
 import com.cts.policy_bazaar.seleniumutils.ScreenShotUtil;
+import com.cts.policy_bazaar.testlistener.MyListenerCombined;
 import com.cts.policy_bazaar.testlistener.MyListenerScenario1;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -16,7 +17,7 @@ import org.testng.annotations.*;
 
 import java.util.List;
 
-@Listeners(MyListenerScenario1.class)
+@Listeners(MyListenerCombined.class)
 public class Scenario1_Runner {
     public static WebDriver driver;
     HomePage hp = null;

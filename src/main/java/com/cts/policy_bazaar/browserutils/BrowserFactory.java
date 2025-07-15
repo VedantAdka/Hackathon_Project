@@ -46,9 +46,8 @@ public class BrowserFactory {
                 driver = new EdgeDriver(edgeOptions);
                 break;
             default:
-                ChromeOptions co = new ChromeOptions();
-                co.addArguments("--headless=new");
-                driver = new ChromeDriver(co);
+                chromeOptions.addArguments("--headless=new");
+                driver = new ChromeDriver(chromeOptions);
                 break;
         }
         driver.manage().window().maximize();
@@ -57,6 +56,14 @@ public class BrowserFactory {
     }
 
     private static WebDriver runRemote(String bn, String ip) throws Exception {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        EdgeOptions edgeOptions=new EdgeOptions();
+        chromeOptions.addArguments("--disable-notifications");
+        chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
+        chromeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
+        edgeOptions.addArguments("--disable-notifications");
+        edgeOptions.addArguments("--disable-blink-features=AutomationControlled");
+        edgeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
         DesiredCapabilities dc = new DesiredCapabilities();
         switch (bn.intern().toLowerCase()) {
             case "chrome":
@@ -70,9 +77,8 @@ public class BrowserFactory {
                 driver = new RemoteWebDriver(new URL(ip + "/wd/hub"), dc);
                 break;
             default:
-                ChromeOptions co = new ChromeOptions();
-                co.addArguments("--headless=new");
-                driver = new ChromeDriver(co);
+                chromeOptions.addArguments("--headless=new");
+                driver = new ChromeDriver(chromeOptions);
                 break;
         }
         driver.manage().window().maximize();
@@ -97,9 +103,8 @@ public class BrowserFactory {
                 driver = new EdgeDriver(edgeOptions);
                 break;
             default:
-                ChromeOptions co = new ChromeOptions();
-                co.addArguments("--headless=new");
-                driver = new ChromeDriver(co);
+                chromeOptions.addArguments("--headless=new");
+                driver = new ChromeDriver(chromeOptions);
                 break;
         }
         driver.manage().window().maximize();
@@ -125,9 +130,8 @@ public class BrowserFactory {
                 driver = new EdgeDriver(edgeOptions);
                 break;
             default:
-                ChromeOptions co = new ChromeOptions();
-                co.addArguments("--headless=new");
-                driver = new ChromeDriver(co);
+                chromeOptions.addArguments("--headless=new");
+                driver = new ChromeDriver(chromeOptions);
                 break;
         }
         driver.manage().window().maximize();
