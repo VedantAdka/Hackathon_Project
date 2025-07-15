@@ -193,8 +193,8 @@ public class Scenario1_Runner {
             pp.clickOnLowToHighButton();
             List<String> insuranceCompanyName=pp.getInsuranceCompanyName();
             List<String> insuranceAmount=pp.getInsurancePrice();
-            ReadAndWriteFromExcel.writeDataForScenario1(insuranceCompanyName,"Company Name",0);
-            ReadAndWriteFromExcel.writeDataForScenario1(insuranceAmount,"Insurance Amount",1);
+            ReadAndWriteFromExcel.writeDataForScenarios(insuranceCompanyName,"Company Name",0,"testdata/TestData_Scenario1.xlsx");
+            ReadAndWriteFromExcel.writeDataForScenarios(insuranceAmount,"Insurance Amount",1,"testdata/TestData_Scenario1.xlsx");
             int actual=insuranceAmount.size();
             Assert.assertTrue(actual!=0, "Did not get any plans");
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNumStr));

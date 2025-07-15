@@ -92,11 +92,11 @@ public class Scenario3_Runner {
             List<String> coverAmount = hi.getCoverAmount();
             List<String> startAmount = hi.getStartAtAmount();
 
-            ReadAndWriteFromExcel.writeDataForScenario3(insuranceName, "Insurance Name", 0);
-            ReadAndWriteFromExcel.writeDataForScenario3(coverAmount, "Cover Amount", 1);
-            ReadAndWriteFromExcel.writeDataForScenario3(startAmount, "Start Amount", 2);
+            ReadAndWriteFromExcel.writeDataForScenarios(insuranceName, "Insurance Name", 0,"testdata/TestData_Scenario3.xlsx");
+            ReadAndWriteFromExcel.writeDataForScenarios(coverAmount, "Cover Amount", 1,"testdata/TestData_Scenario3.xlsx");
+            ReadAndWriteFromExcel.writeDataForScenarios(startAmount, "Start Amount", 2,"testdata/TestData_Scenario3.xlsx");
 
-            Assert.assertTrue(insuranceName.size() > 0, "No insurance plans retrieved");
+            Assert.assertTrue(insuranceName.size() != 0, "No insurance plans retrieved");
 
         } catch (Exception e) {
             ScreenShotUtil.takeScreenShot(driver);

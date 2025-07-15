@@ -95,44 +95,8 @@ public class ReadAndWriteFromExcel {
         }
     }
 
-    public static void writeDataForScenario1(List<String> data, String colName, int colNo) {
-        File filePath = new File("testdata/TestData_Scenario1.xlsx");
-        XSSFWorkbook wb;
-        XSSFSheet sheet;
-        try {
-            if (filePath.exists()) {
-                FileInputStream fis = new FileInputStream(filePath);
-                wb = new XSSFWorkbook(fis);
-                sheet = wb.getSheet("data1");
-                fis.close();
-            } else {
-                wb = new XSSFWorkbook();
-                sheet = wb.createSheet("data1");
-            }
-            int size = data.size();
-            XSSFRow first_row = sheet.getRow(0);
-            if (first_row == null) {
-                first_row = sheet.createRow(0);
-            }
-            first_row.createCell(colNo).setCellValue(colName);
-            for (int i = 1; i <= size; i++) {
-                XSSFRow row = sheet.getRow(i);
-                if (row == null) {
-                    row = sheet.createRow(i);
-                }
-                row.createCell(colNo).setCellValue(data.get(i - 1));
-            }
-            FileOutputStream fileOut = new FileOutputStream(filePath);
-            wb.write(fileOut);
-            fileOut.close();
-            wb.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void writeDataForScenario3(List<String> data, String colName, int colNo) {
-        File filePath = new File("testdata/TestData_Scenario3.xlsx");
+    public static void writeDataForScenarios(List<String> data, String colName, int colNo, String path) {
+        File filePath = new File(path);
         XSSFWorkbook wb;
         XSSFSheet sheet;
         try {
