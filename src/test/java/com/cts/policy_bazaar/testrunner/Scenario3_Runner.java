@@ -7,12 +7,13 @@ import com.cts.policy_bazaar.frameworkutils.ReadAndWriteFromExcel;
 import com.cts.policy_bazaar.pageobjects.HealthInsurancePage;
 import com.cts.policy_bazaar.pageobjects.HomePage;
 import com.cts.policy_bazaar.seleniumutils.ScreenShotUtil;
+import com.cts.policy_bazaar.testlistener.MyListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.List;
-
+@Listeners(MyListener.class)
 public class Scenario3_Runner {
 
     public static WebDriver driver;
@@ -68,7 +69,6 @@ public class Scenario3_Runner {
             hp.hoverToInsuranceProducts();
             hp.selectHealthInsurance();
             String actualTitle = hi.getTitle();
-
             Assert.assertEquals(actualTitle, pageTitle, "Did not switch to Health Insurance Page");
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNum));
         } catch (Exception e) {

@@ -1,329 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="11" passed="11" failed="0" skipped="0">
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-07-13T19:39:37 IST" name="Default Suite" finished-at="2025-07-13T19:46:00 IST" duration-ms="382762">
+  <suite started-at="2025-07-15T10:52:34 IST" name="Default Suite" finished-at="2025-07-15T10:53:52 IST" duration-ms="77874">
     <groups>
     </groups>
-    <test started-at="2025-07-13T19:39:37 IST" name="Hackathon_Project" finished-at="2025-07-13T19:46:00 IST" duration-ms="382762">
-      <class name="com.cts.policy_bazaar.testrunner.Scenario1_Runner">
-        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:39:38 IST" name="init" finished-at="2025-07-13T19:39:46 IST" duration-ms="8329" status="PASS">
+    <test started-at="2025-07-15T10:52:34 IST" name="Hackathon_Project" finished-at="2025-07-15T10:53:52 IST" duration-ms="77874">
+      <class name="com.cts.policy_bazaar.testrunner.Scenario3_Runner">
+        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario3_Runner@52e6fdee]" started-at="2025-07-15T10:52:35 IST" name="init" finished-at="2025-07-15T10:52:41 IST" duration-ms="6887" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method signature="validateAccessingTravelInsurancePage()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:39:46 IST" name="validateAccessingTravelInsurancePage" finished-at="2025-07-13T19:39:46 IST" duration-ms="422" status="PASS">
+        <test-method signature="validateIfInsuranceProductIsEnabled()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario3_Runner@52e6fdee]" started-at="2025-07-15T10:52:41 IST" name="validateIfInsuranceProductIsEnabled" finished-at="2025-07-15T10:52:43 IST" duration-ms="1357" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validateAccessingTravelInsurancePage -->
-        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:39:46 IST" name="end" finished-at="2025-07-13T19:39:53 IST" duration-ms="6483" status="PASS">
+        </test-method> <!-- validateIfInsuranceProductIsEnabled -->
+        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario3_Runner@52e6fdee]" started-at="2025-07-15T10:52:43 IST" name="end" finished-at="2025-07-15T10:52:49 IST" duration-ms="6617" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- end -->
-        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:39:54 IST" name="init" finished-at="2025-07-13T19:40:05 IST" duration-ms="11038" status="PASS">
+        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario3_Runner@52e6fdee]" started-at="2025-07-15T10:52:49 IST" name="init" finished-at="2025-07-15T10:52:55 IST" duration-ms="5314" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method signature="validateSelectingDestination(java.lang.String)[pri:1, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:40:05 IST" name="validateSelectingDestination" data-provider="excelTestData" finished-at="2025-07-13T19:40:09 IST" duration-ms="4261" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Germany]]>
-              </value>
-            </param>
-          </params>
+        <test-method signature="validateIfHealthInsuranceIsEnabled()[pri:1, instance:com.cts.policy_bazaar.testrunner.Scenario3_Runner@52e6fdee]" started-at="2025-07-15T10:52:55 IST" name="validateIfHealthInsuranceIsEnabled" finished-at="2025-07-15T10:52:56 IST" duration-ms="1250" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validateSelectingDestination -->
-        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:40:09 IST" name="end" finished-at="2025-07-13T19:40:23 IST" duration-ms="14106" status="PASS">
+        </test-method> <!-- validateIfHealthInsuranceIsEnabled -->
+        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario3_Runner@52e6fdee]" started-at="2025-07-15T10:52:56 IST" name="end" finished-at="2025-07-15T10:53:01 IST" duration-ms="4685" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- end -->
-        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:40:23 IST" name="init" finished-at="2025-07-13T19:40:31 IST" duration-ms="8055" status="PASS">
+        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario3_Runner@52e6fdee]" started-at="2025-07-15T10:53:03 IST" name="init" finished-at="2025-07-15T10:53:09 IST" duration-ms="5638" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method signature="validateTravelStartAndEndDate(java.lang.String,java.lang.String)[pri:2, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:40:31 IST" name="validateTravelStartAndEndDate" data-provider="excelTestData" finished-at="2025-07-13T19:40:42 IST" duration-ms="11191" status="PASS">
+        <test-method signature="validateIfWeSwitchedToHealthInsurancePage(java.lang.String,java.lang.String)[pri:2, instance:com.cts.policy_bazaar.testrunner.Scenario3_Runner@52e6fdee]" started-at="2025-07-15T10:53:09 IST" name="validateIfWeSwitchedToHealthInsurancePage" data-provider="excelTestData" finished-at="2025-07-15T10:53:14 IST" duration-ms="5271" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[13]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[11]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateTravelStartAndEndDate -->
-        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:40:42 IST" name="end" finished-at="2025-07-13T19:40:53 IST" duration-ms="10550" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- end -->
-        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:40:53 IST" name="init" finished-at="2025-07-13T19:41:02 IST" duration-ms="8924" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- init -->
-        <test-method signature="validateSelecting2TravellersAndGoingToPlansPage(java.lang.String,java.lang.String,java.lang.String)[pri:3, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:41:02 IST" name="validateSelecting2TravellersAndGoingToPlansPage" data-provider="excelTestData" finished-at="2025-07-13T19:41:18 IST" duration-ms="16232" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[22]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[21]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[2 Traveller(s)]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateSelecting2TravellersAndGoingToPlansPage -->
-        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:41:18 IST" name="end" finished-at="2025-07-13T19:41:26 IST" duration-ms="7466" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- end -->
-        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:41:26 IST" name="init" finished-at="2025-07-13T19:41:33 IST" duration-ms="7710" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- init -->
-        <test-method signature="validateClickingOnViewPlansAndGoingToPlansPage(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:4, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:41:33 IST" name="validateClickingOnViewPlansAndGoingToPlansPage" data-provider="excelTestData" finished-at="2025-07-13T19:42:09 IST" duration-ms="36252" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Germany]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[13]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[11]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[22]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[21]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateClickingOnViewPlansAndGoingToPlansPage -->
-        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:42:09 IST" name="end" finished-at="2025-07-13T19:42:18 IST" duration-ms="8366" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- end -->
-        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:42:18 IST" name="init" finished-at="2025-07-13T19:42:26 IST" duration-ms="7692" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- init -->
-        <test-method signature="validateSelectingStudentPlans(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:5, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:42:26 IST" name="validateSelectingStudentPlans" data-provider="excelTestData" finished-at="2025-07-13T19:42:56 IST" duration-ms="29994" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Germany]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[13]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[11]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[22]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[21]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[30 Days]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateSelectingStudentPlans -->
-        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:42:56 IST" name="end" finished-at="2025-07-13T19:43:03 IST" duration-ms="6977" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- end -->
-        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:43:03 IST" name="init" finished-at="2025-07-13T19:43:09 IST" duration-ms="6479" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- init -->
-        <test-method signature="validatedSortingPlansFromLowToHigh(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:6, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:43:09 IST" name="validatedSortingPlansFromLowToHigh" data-provider="excelTestData" finished-at="2025-07-13T19:43:42 IST" duration-ms="32683" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Germany]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[13]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[11]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[22]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[21]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[30 Days]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validatedSortingPlansFromLowToHigh -->
-        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:43:42 IST" name="end" finished-at="2025-07-13T19:43:49 IST" duration-ms="7430" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- end -->
-        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:43:49 IST" name="init" finished-at="2025-07-13T19:43:55 IST" duration-ms="5701" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- init -->
-        <test-method signature="validateGettingTop3Plans(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:7, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:43:55 IST" name="validateGettingTop3Plans" data-provider="excelTestData" finished-at="2025-07-13T19:44:27 IST" duration-ms="31939" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Germany]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[13]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[11]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[22]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[21]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[30 Days]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateGettingTop3Plans -->
-        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:44:27 IST" name="end" finished-at="2025-07-13T19:44:35 IST" duration-ms="8540" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- end -->
-        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:44:35 IST" name="init" finished-at="2025-07-13T19:44:42 IST" duration-ms="6504" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- init -->
-        <test-method signature="validateNoTravellerSelectedGivesError(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:8, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:44:42 IST" name="validateNoTravellerSelectedGivesError" data-provider="excelTestData" finished-at="2025-07-13T19:44:57 IST" duration-ms="14866" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Germany]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[13]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[11]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Please add traveller(s)]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateNoTravellerSelectedGivesError -->
-        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:44:57 IST" name="end" finished-at="2025-07-13T19:45:04 IST" duration-ms="7614" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- end -->
-        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:45:04 IST" name="init" finished-at="2025-07-13T19:45:10 IST" duration-ms="5813" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- init -->
-        <test-method signature="validateInvalidCountryNameShowsNoResult(java.lang.String)[pri:9, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:45:10 IST" name="validateInvalidCountryNameShowsNoResult" data-provider="excelTestData" finished-at="2025-07-13T19:45:16 IST" duration-ms="5761" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[ZZZ]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validateInvalidCountryNameShowsNoResult -->
-        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:45:16 IST" name="end" finished-at="2025-07-13T19:45:23 IST" duration-ms="7110" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- end -->
-        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:45:23 IST" name="init" finished-at="2025-07-13T19:45:32 IST" duration-ms="8991" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- init -->
-        <test-method signature="validateNotSelectingDateThrowsError(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:10, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:45:32 IST" name="validateNotSelectingDateThrowsError" data-provider="excelTestData" finished-at="2025-07-13T19:45:51 IST" duration-ms="18801" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[Germany]]>
+                <![CDATA[Health Insurance: Buy Medical Insurance Plans @ ₹10/Day*]]>
               </value>
             </param>
             <param index="1">
@@ -331,25 +47,27 @@
                 <![CDATA[22]]>
               </value>
             </param>
-            <param index="2">
-              <value>
-                <![CDATA[21]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Please select trip dates]]>
-              </value>
-            </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- validateNotSelectingDateThrowsError -->
-        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario1_Runner@6dc17b83]" started-at="2025-07-13T19:45:51 IST" name="end" finished-at="2025-07-13T19:46:00 IST" duration-ms="8787" status="PASS">
+        </test-method> <!-- validateIfWeSwitchedToHealthInsurancePage -->
+        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario3_Runner@52e6fdee]" started-at="2025-07-15T10:53:14 IST" name="end" finished-at="2025-07-15T10:53:19 IST" duration-ms="5239" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- end -->
-      </class> <!-- com.cts.policy_bazaar.testrunner.Scenario1_Runner -->
+        <test-method is-config="true" signature="init()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario3_Runner@52e6fdee]" started-at="2025-07-15T10:53:19 IST" name="init" finished-at="2025-07-15T10:53:25 IST" duration-ms="5260" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method signature="validateRetrievingHealthInsuranceData()[pri:3, instance:com.cts.policy_bazaar.testrunner.Scenario3_Runner@52e6fdee]" started-at="2025-07-15T10:53:25 IST" name="validateRetrievingHealthInsuranceData" finished-at="2025-07-15T10:53:46 IST" duration-ms="21458" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validateRetrievingHealthInsuranceData -->
+        <test-method is-config="true" signature="end()[pri:0, instance:com.cts.policy_bazaar.testrunner.Scenario3_Runner@52e6fdee]" started-at="2025-07-15T10:53:46 IST" name="end" finished-at="2025-07-15T10:53:52 IST" duration-ms="6157" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- end -->
+      </class> <!-- com.cts.policy_bazaar.testrunner.Scenario3_Runner -->
     </test> <!-- Hackathon_Project -->
   </suite> <!-- Default Suite -->
 </testng-results>
