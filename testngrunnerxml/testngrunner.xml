@@ -4,6 +4,8 @@
     <test name="Test1">
         <classes>
             <class name="com.cts.policy_bazaar.testrunner.Scenario1_Runner"/>
+            <class name="com.cts.policy_bazaar.testrunner.Scenario2_Runner"/>
+            <class name="com.cts.policy_bazaar.testrunner.Scenario3_Runner"/>
         </classes>
     </test>
 </suite>

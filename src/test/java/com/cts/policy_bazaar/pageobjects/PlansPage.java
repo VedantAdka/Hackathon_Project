@@ -79,7 +79,7 @@ public class PlansPage extends BasePage {
     }
 
     public void clickOnLowToHighButton() {
-        lowToHighButton.click();
+        Waits.waitElementToBeClickable(driver,lowToHighButton,30).click();
         CommonUtils.sureWait(1);
     }
 
