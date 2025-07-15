@@ -1,16 +1,13 @@
 package com.cts.policy_bazaar.testlistener;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.*;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import com.cts.policy_bazaar.seleniumutils.ScreenShotUtil;
-import com.cts.policy_bazaar.testrunner.Scenario1_Runner;
 import org.openqa.selenium.WebDriver;
-import org.testng.ITestContext;
-import org.testng.ITestListener;
-import org.testng.ITestResult;
+import org.testng.*;
+
+import java.lang.reflect.Field;
 
 public class MyListener implements ITestListener {
 
@@ -19,16 +16,16 @@ public class MyListener implements ITestListener {
 
     @Override
     public void onStart(ITestContext context) {
-        String reportPath = "test-output/ThirdPartyReports/ExtentReport.html";
+        String reportPath = "test-output/reports/ExtentReport.html";
 
         ExtentSparkReporter spark = new ExtentSparkReporter(reportPath);
         spark.config().setDocumentTitle("Automation Report");
-        spark.config().setReportName("Mini Project Report");
+        spark.config().setReportName("Policy Bazaar Suite");
         spark.config().setTheme(Theme.DARK);
 
         extent = new ExtentReports();
         extent.attachReporter(spark);
-        extent.setSystemInfo("Tester", "Vedant Adka");
+        extent.setSystemInfo("Tester", "CodeBreakers");
         extent.setSystemInfo("Environment", "QA");
         extent.setSystemInfo("OS", System.getProperty("os.name"));
         extent.setSystemInfo("Browser", "Chrome");
@@ -42,17 +39,34 @@ public class MyListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        test.log(Status.PASS, "Test Passed: " + result.getMethod().getMethodName());
+        if (test != null) {
+            test.log(Status.PASS, "Test Passed: " + result.getMethod().getMethodName());
+        }
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        WebDriver driver = Scenario1_Runner.driver;
-        String path = ScreenShotUtil.takeScreenShot(driver, result.getName());
-        test.log(Status.FAIL, "Test Failed: " + result.getMethod().getMethodName());
-        test.addScreenCaptureFromPath(path);
-        System.out.println("Screenshot saved at: " + path);
+        if (test == null) {
+            test = extent.createTest(result.getMethod().getMethodName());
+        }
+
+        try {
+            Object testClassInstance = result.getInstance();
+            Field driverField = testClassInstance.getClass().getDeclaredField("driver");
+            driverField.setAccessible(true);
+            WebDriver driver = (WebDriver) driverField.get(testClassInstance);
+
+            String path = ScreenShotUtil.takeScreenShot(driver, result.getName());
+            test.log(Status.FAIL, "Test Failed: " + result.getMethod().getMethodName());
+            test.log(Status.FAIL, result.getThrowable());
+            test.addScreenCaptureFromPath(path);
+            System.out.println("Screenshot saved at: " + path);
+        } catch (Exception e) {
+            test.log(Status.FAIL, "Failed to take screenshot: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
+
 
     @Override
     public void onTestSkipped(ITestResult result) {
