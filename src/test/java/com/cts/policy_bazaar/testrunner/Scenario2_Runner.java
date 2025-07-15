@@ -6,10 +6,11 @@ import com.cts.policy_bazaar.frameworkutils.ReadAndWriteFromExcel;
 import com.cts.policy_bazaar.pageobjects.*;
 import com.cts.policy_bazaar.testlistener.MyListener;
 import com.cts.policy_bazaar.seleniumutils.ScreenShotUtil;
+import com.cts.policy_bazaar.testlistener.MyListenerScenario2;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
-@Listeners(MyListener.class)
+@Listeners(MyListenerScenario2.class)
 public class Scenario2_Runner {
 
     public static WebDriver driver;

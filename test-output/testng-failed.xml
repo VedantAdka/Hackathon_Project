@@ -7,8 +7,6 @@
         <methods>
           <include name="validatedSortingPlansFromLowToHigh" invocation-numbers="0"/>
           <include name="end"/>
-          <include name="validateNoTravellerSelectedGivesError" invocation-numbers="0"/>
-          <include name="validateGettingTop3Plans" invocation-numbers="0"/>
           <include name="validateSelectingStudentPlans" invocation-numbers="0"/>
           <include name="init"/>
         </methods>

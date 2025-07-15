@@ -59,6 +59,8 @@ public class TravelInsurancePage extends BasePage{
         super(driver);
     }
     public boolean putCountryNameInSearchBox(String countryName){
+        CommonUtils.sureWait(2);
+        Waits.waitElementToBeClickable(driver,searchBox,30);
         ActionUtil.moveToElementAction(driver,searchBox);
         ActionUtil.clickAction(driver,searchBox);
         ActionUtil.sendKeysAction(driver,countryName);
@@ -151,7 +153,8 @@ public class TravelInsurancePage extends BasePage{
         JavaScriptUtil.JSclick(viewButton,driver);
     }
     public String getErrorMessage(){
-        return errorMessage.getText();
+        CommonUtils.sureWait(2);
+        return Waits.waitElementToBeVisible(driver,errorMessage,30).getText();
     }
     public void clickCutButton(){
         ActionUtil.moveToElementAction(driver,cutButton);

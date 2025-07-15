@@ -9,13 +9,14 @@ import com.cts.policy_bazaar.pageobjects.PlansPage;
 import com.cts.policy_bazaar.pageobjects.TravelInsurancePage;
 import com.cts.policy_bazaar.testlistener.MyListener;
 import com.cts.policy_bazaar.seleniumutils.ScreenShotUtil;
+import com.cts.policy_bazaar.testlistener.MyListenerScenario1;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.List;
 
-@Listeners(MyListener.class)
+@Listeners(MyListenerScenario1.class)
 public class Scenario1_Runner {
     public static WebDriver driver;
     HomePage hp = null;
@@ -45,11 +46,18 @@ public class Scenario1_Runner {
         }
     }
 
-    @Test(priority = 0)
-    public void validateAccessingTravelInsurancePage() {
-        String actual = driver.getTitle();
-        String expected = hp.getTitle();
-        Assert.assertEquals(actual, expected, "Title does not match");
+    @Test(priority = 0, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    public void validateAccessingTravelInsurancePage(String rowNumStr) {
+        try {
+            String actual = driver.getTitle();
+            String expected = hp.getTitle();
+            Assert.assertEquals(actual, expected, "Title does not match");
+            ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNumStr));
+        } catch (Exception | AssertionError e) {
+            ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowNumStr));
+            ScreenShotUtil.takeScreenShot(driver, "validateAccessingTravelInsurancePage");
+            Assert.fail(e.getMessage());
+        }
     }
 
     @Test(priority = 1, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
@@ -193,8 +201,8 @@ public class Scenario1_Runner {
             pp.clickOnLowToHighButton();
             List<String> insuranceCompanyName=pp.getInsuranceCompanyName();
             List<String> insuranceAmount=pp.getInsurancePrice();
-            ReadAndWriteFromExcel.writeDataForScenarios(insuranceCompanyName,"Company Name",0,"testdata/TestData_Scenario1.xlsx");
-            ReadAndWriteFromExcel.writeDataForScenarios(insuranceAmount,"Insurance Amount",1,"testdata/TestData_Scenario1.xlsx");
+            ReadAndWriteFromExcel.writeDataForScenarios(insuranceCompanyName,"Company Name",0,"testdata/Scenario1_Output.xlsx");
+            ReadAndWriteFromExcel.writeDataForScenarios(insuranceAmount,"Insurance Amount",1,"testdata/Scenario1_Output.xlsx");
             int actual=insuranceAmount.size();
             Assert.assertTrue(actual!=0, "Did not get any plans");
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNumStr));
@@ -214,6 +222,7 @@ public class Scenario1_Runner {
             tp.clickCutButton();
             tp.clickOnViewPlansButton();
             Assert.assertEquals(tp.getErrorMessage(), errorMsg, "Did not throw error");
+            ScreenShotUtil.takeScreenShot(driver,"validateNoTravellerSelectedGivesError");
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNumStr));
         } catch (Exception | AssertionError e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowNumStr));
@@ -227,6 +236,7 @@ public class Scenario1_Runner {
         try {
             boolean res = tp.putCountryNameInSearchBox(country);
             Assert.assertFalse(res, "Did not throw error");
+            ScreenShotUtil.takeScreenShot(driver,"validateInvalidCountryNameShowsNoResult");
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNumStr));
         } catch (Exception | AssertionError e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowNumStr));
@@ -248,6 +258,7 @@ public class Scenario1_Runner {
             tp.clickCutButton();
             tp.clickOnViewPlansButton();
             Assert.assertEquals(tp.getErrorMessage(), errorMsg, "Did not throw error");
+            ScreenShotUtil.takeScreenShot(driver,"validateNotSelectingDateThrowsError");
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNumStr));
         } catch (Exception | AssertionError e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowNumStr));

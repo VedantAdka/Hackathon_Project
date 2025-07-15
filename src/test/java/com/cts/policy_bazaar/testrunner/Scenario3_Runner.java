@@ -8,12 +8,13 @@ import com.cts.policy_bazaar.pageobjects.HealthInsurancePage;
 import com.cts.policy_bazaar.pageobjects.HomePage;
 import com.cts.policy_bazaar.seleniumutils.ScreenShotUtil;
 import com.cts.policy_bazaar.testlistener.MyListener;
+import com.cts.policy_bazaar.testlistener.MyListenerScenario3;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
 import java.util.List;
-@Listeners(MyListener.class)
+@Listeners(MyListenerScenario3.class)
 public class Scenario3_Runner {
 
     public static WebDriver driver;
@@ -41,25 +42,29 @@ public class Scenario3_Runner {
         }
     }
 
-    @Test(priority = 0)
-    public void validateIfInsuranceProductIsEnabled() {
+    @Test(priority = 0, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    public void validateIfInsuranceProductIsEnabled(String dummy, String rowNum) {
         try {
             hp.hoverToInsuranceProducts();
             Assert.assertTrue(hp.insuranceProductsIsEnabled(), "Insurance Products not enabled");
-        } catch (AssertionError e) {
-            ScreenShotUtil.takeScreenShot(driver);
-            throw e;
+            ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNum));
+        } catch (Exception | AssertionError e) {
+            ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowNum));
+            ScreenShotUtil.takeScreenShot(driver, "validateIfInsuranceProductIsEnabled");
+            Assert.fail(e.getMessage());
         }
     }
 
-    @Test(priority = 1)
-    public void validateIfHealthInsuranceIsEnabled() {
+    @Test(priority = 1, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    public void validateIfHealthInsuranceIsEnabled(String dummy, String rowNum) {
         try {
             hp.hoverToInsuranceProducts();
             Assert.assertTrue(hp.healthInsuranceIsEnabled(), "Health Insurance not enabled");
-        } catch (AssertionError e) {
-            ScreenShotUtil.takeScreenShot(driver);
-            throw e;
+            ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNum));
+        } catch (Exception | AssertionError e) {
+            ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowNum));
+            ScreenShotUtil.takeScreenShot(driver, "validateIfHealthInsuranceIsEnabled");
+            Assert.fail(e.getMessage());
         }
     }
 
@@ -78,8 +83,8 @@ public class Scenario3_Runner {
         }
     }
 
-    @Test(priority = 3)
-    public void validateRetrievingHealthInsuranceData() {
+    @Test(priority = 3, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    public void validateRetrievingHealthInsuranceData(String dummy, String rowNum) {
         try {
             hp.hoverToInsuranceProducts();
             hp.selectHealthInsurance();
@@ -92,15 +97,17 @@ public class Scenario3_Runner {
             List<String> coverAmount = hi.getCoverAmount();
             List<String> startAmount = hi.getStartAtAmount();
 
-            ReadAndWriteFromExcel.writeDataForScenarios(insuranceName, "Insurance Name", 0,"testdata/TestData_Scenario3.xlsx");
-            ReadAndWriteFromExcel.writeDataForScenarios(coverAmount, "Cover Amount", 1,"testdata/TestData_Scenario3.xlsx");
-            ReadAndWriteFromExcel.writeDataForScenarios(startAmount, "Start Amount", 2,"testdata/TestData_Scenario3.xlsx");
+            ReadAndWriteFromExcel.writeDataForScenarios(insuranceName, "Insurance Name", 0,"testdata/Scenario3_Output.xlsx");
+            ReadAndWriteFromExcel.writeDataForScenarios(coverAmount, "Cover Amount", 1,"testdata/Scenario3_Output.xlsx");
+            ReadAndWriteFromExcel.writeDataForScenarios(startAmount, "Start Amount", 2,"testdata/Scenario3_Output.xlsx");
 
-            Assert.assertTrue(insuranceName.size() != 0, "No insurance plans retrieved");
+            Assert.assertTrue(insuranceName.size() > 0, "No insurance plans retrieved");
 
-        } catch (Exception e) {
-            ScreenShotUtil.takeScreenShot(driver);
-            throw e;
+            ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNum));
+        } catch (Exception | AssertionError e) {
+            ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowNum));
+            ScreenShotUtil.takeScreenShot(driver, "validateRetrievingHealthInsuranceData");
+            Assert.fail(e.getMessage());
         }
     }
 

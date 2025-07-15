@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,7 @@ public class PlansPage extends BasePage {
     public void clickOnStudentPlans() {
         CommonUtils.sureWait(2);
         ActionUtil.moveToElementAction(driver,studentPlanButton);
+        Waits.waitElementToBeClickable(driver,studentPlanButton,30);
         ActionUtil.clickAction(driver,studentPlanButton);
         CommonUtils.sureWait(1);
     }
@@ -70,7 +72,8 @@ public class PlansPage extends BasePage {
     }
 
     public boolean studentsPlansDisplayed(){
-        return showsStudentPlanText.isDisplayed();
+        CommonUtils.sureWait(2);
+        return Waits.waitElementToBeVisible(driver,showsStudentPlanText,30).isDisplayed();
     }
 
     public void clickOnSortDropDownButton() {
@@ -84,7 +87,8 @@ public class PlansPage extends BasePage {
     }
 
     public boolean lowToHighBtnSelected(){
-        return lowToHighButton.isSelected();
+        CommonUtils.sureWait(2);
+        return Waits.waitElementToBeVisible(driver,lowToHighButton,30).isSelected();
     }
 
     public List<String> getInsuranceCompanyName(){
