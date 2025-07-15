@@ -34,7 +34,7 @@ public class MyListenerCombined implements ITestListener {
     @Override
     public void onTestStart(ITestResult result) {
         ExtentTest test = extent.createTest(
-                result.getTestClass().getName() + " :: " + result.getMethod().getMethodName());
+                result.getTestClass().getRealClass().getSimpleName() + " :: " + result.getMethod().getMethodName());
         test.log(Status.INFO, "Test Started: " + result.getMethod().getMethodName());
         testThread.set(test);
     }
