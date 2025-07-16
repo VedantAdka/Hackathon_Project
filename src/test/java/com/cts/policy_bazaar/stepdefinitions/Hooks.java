@@ -10,8 +10,6 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.openqa.selenium.WebDriver;
 
-import java.io.FileNotFoundException;
-
 public class Hooks {
     public static WebDriver driver;
     public static HomePage hp;
@@ -26,14 +24,15 @@ public class Hooks {
         String url = PropertiesFileReader.getPropertyValue("config", "url");
         driver = BrowserFactory.getBrowser(bn, wr, remoteip);
         BrowserFactory.OpenUrl(url);
-        hp=new HomePage(driver);
-        tp=new TravelInsurancePage(driver);
-        pp=new PlansPage(driver);
+        hp = new HomePage(driver);
+        tp = new TravelInsurancePage(driver);
+        pp = new PlansPage(driver);
     }
+
     @After
-    public void end(){
+    public void end() {
         CommonUtils.sureWait(3);
-        if(driver!=null){
+        if (driver != null) {
             driver.quit();
         }
     }

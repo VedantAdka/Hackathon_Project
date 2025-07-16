@@ -71,7 +71,7 @@ public class ReadAndWriteFromExcel {
         return result.toArray(new Object[0][0]);
     }
 
-    public static void  writeResult(String status, int rowNum) {
+    public static void writeResult(String status, int rowNum) {
         try (FileInputStream file = new FileInputStream(EXCEL_PATH)) {
             XSSFWorkbook wb = new XSSFWorkbook(file);
             XSSFSheet sheet = wb.getSheetAt(0);
@@ -130,4 +130,34 @@ public class ReadAndWriteFromExcel {
             e.printStackTrace();
         }
     }
+
+    public static Map<String, String> getTestData(String tcId) {
+        Map<String, String> data = new HashMap<>();
+        try {
+            FileInputStream fis = new FileInputStream(new File(EXCEL_PATH));
+            Workbook workbook = new XSSFWorkbook(fis);
+            Sheet sheet = workbook.getSheetAt(0);
+            Row headerRow = sheet.getRow(0);
+
+            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+                Row row = sheet.getRow(i);
+                if (row.getCell(1).getStringCellValue().equalsIgnoreCase(tcId)) {
+                    for (int j = 0; j < row.getLastCellNum(); j++) {
+                        Cell headerCell = headerRow.getCell(j);
+                        Cell dataCell = row.getCell(j);
+                        if (headerCell != null && dataCell != null) {
+                            data.put(headerCell.getStringCellValue(), dataCell.toString());
+                        }
+                    }
+                    break;
+                }
+            }
+            workbook.close();
+            fis.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return data;
+    }
 }
+
