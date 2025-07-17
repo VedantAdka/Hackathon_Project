@@ -137,6 +137,8 @@ public class TravelInsuranceStepsFromExcel {
 
     @Then("I should get company names and insurance amounts")
     public void i_should_get_company_names_and_insurance_amounts() {
+        ReadAndWriteFromExcel.writeDataForScenarios(pp.getInsuranceCompanyName(),"Insurance Company Name", 0, "testdata/Scenario1_Output.xlsx");
+        ReadAndWriteFromExcel.writeDataForScenarios(pp.getInsurancePrice(),"Insurance Amount",1,"testdata/Scenario1_Output.xlsx");
         Assert.assertTrue(pp.getInsuranceCompanyName().size() > 0);
         Assert.assertTrue(pp.getInsurancePrice().size() > 0);
     }
@@ -153,8 +155,8 @@ public class TravelInsuranceStepsFromExcel {
         Assert.assertEquals(actualMsg, expectedMsg);
     }
 
-    @Then("I should see no result message from data")
-    public void i_should_see_no_result_message_from_data() {
+    @Then("I should see error message of country from data")
+    public void i_should_see_error_message_of_country_from_data() {
         String country=testData.get("Test Data1");
         boolean result = tp.putCountryNameInSearchBox(country);
         Assert.assertFalse(result);

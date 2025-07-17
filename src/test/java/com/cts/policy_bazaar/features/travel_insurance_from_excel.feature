@@ -84,7 +84,7 @@ Feature: Travel Insurance Functionality
     Given I load test data for "TC_001_10"
     And I am on the travel insurance page
     When I enter destination from data
-    Then I should see no result message from data
+    Then I should see error message of country from data
 
   Scenario: TC_001_11 - Validate not selecting date shows error
     Given I load test data for "TC_001_11"
@@ -94,4 +94,4 @@ Feature: Travel Insurance Functionality
     And I submit the traveller details
     And I click cut button
     And I click on view plans
-    Then I should see error message "Please select trip dates"
+    Then I should see error message from data
