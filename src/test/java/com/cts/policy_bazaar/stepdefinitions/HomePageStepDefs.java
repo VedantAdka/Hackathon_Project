@@ -4,13 +4,9 @@ import com.cts.policy_bazaar.pageobjects.HomePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
-import java.util.Map;
-
 import static com.cts.policy_bazaar.stepdefinitions.Hooks.*;
 
 public class HomePageStepDefs {
-
-    Map<String, String> testData;
 
     @Given("I am on the home page")
     public void i_am_on_the_home_page() {
@@ -29,5 +25,8 @@ public class HomePageStepDefs {
         hp.clickOnTravelInsurance();
         tp = new com.cts.policy_bazaar.pageobjects.TravelInsurancePage(driver);
     }
-
+    @Given("user is on the car insurance page")
+    public void user_is_on_car_insurance_page(){
+        hp.clickCarSection();
+    }
 }

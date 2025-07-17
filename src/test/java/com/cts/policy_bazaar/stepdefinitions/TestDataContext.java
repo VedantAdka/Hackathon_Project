@@ -1,6 +1,4 @@
-package com.cts.policy_bazaar.stepdefinitions;
-
-import com.cts.policy_bazaar.frameworkutils.ReadAndWriteFromExcel;
+package com.cts.policy_bazaar.frameworkutils;
 
 import java.util.Map;
 
@@ -11,13 +9,20 @@ public class TestDataContext {
     public static String getTcId() {
         return tcId;
     }
+
+    public static void setTcId(String tcId) {
+        TestDataContext.tcId = tcId;
+    }
+
     public static Map<String, String> getTestData() {
         return testData;
     }
+
     public static void setTestData(Map<String, String> testData) {
         TestDataContext.testData = testData;
     }
-    public static void setTcId(String tcId) {
-        TestDataContext.tcId = tcId;
+
+    public static String get(String key) {
+        return testData.get(key);
     }
 }

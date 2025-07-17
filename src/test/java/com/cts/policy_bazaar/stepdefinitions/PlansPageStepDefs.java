@@ -1,6 +1,7 @@
 package com.cts.policy_bazaar.stepdefinitions;
 
 import com.cts.policy_bazaar.frameworkutils.ReadAndWriteFromExcel;
+import com.cts.policy_bazaar.frameworkutils.TestDataContext;
 import com.cts.policy_bazaar.pageobjects.PlansPage;
 import io.cucumber.java.en.*;
 import org.testng.Assert;
@@ -10,8 +11,6 @@ import java.util.Map;
 import static com.cts.policy_bazaar.stepdefinitions.Hooks.*;
 
 public class PlansPageStepDefs {
-    String tcId;
-
 
     @When("I click on view plans")
     public void i_click_on_view_plans() {
@@ -26,11 +25,10 @@ public class PlansPageStepDefs {
 
     @When("I filter by student plans from data")
     public void i_filter_by_student_plans_from_data() {
-        Map<String, String> testData=TestDataContext.getTestData();
-        String duration = testData.get("Test Data7");
+        Map<String, String> testData = TestDataContext.getTestData();
         pp.clickOnStudentPlans();
         pp.selectBothStudents();
-        pp.selectTripDuration(duration);
+        pp.selectTripDuration(testData.get("Test Data7"));
         pp.clickOnApplyButton();
     }
 
@@ -63,5 +61,4 @@ public class PlansPageStepDefs {
         Assert.assertTrue(pp.getInsuranceCompanyName().size() > 0);
         Assert.assertTrue(pp.getInsurancePrice().size() > 0);
     }
-
 }
