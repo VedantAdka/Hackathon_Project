@@ -8,9 +8,11 @@ import com.cts.policy_bazaar.pageobjects.PlansPage;
 import com.cts.policy_bazaar.pageobjects.TravelInsurancePage;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+
 import org.openqa.selenium.WebDriver;
 
 public class Hooks {
+
     public static WebDriver driver;
     public static HomePage hp;
     public static TravelInsurancePage tp;
@@ -22,8 +24,10 @@ public class Hooks {
         String wr = PropertiesFileReader.getPropertyValue("config", "wheretorun");
         String remoteip = PropertiesFileReader.getPropertyValue("config", "hubip");
         String url = PropertiesFileReader.getPropertyValue("config", "url");
+
         driver = BrowserFactory.getBrowser(bn, wr, remoteip);
         BrowserFactory.OpenUrl(url);
+
         hp = new HomePage(driver);
         tp = new TravelInsurancePage(driver);
         pp = new PlansPage(driver);

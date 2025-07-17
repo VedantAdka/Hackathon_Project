@@ -77,6 +77,7 @@ public class PlansPage extends BasePage {
     public void selectTripDuration(String duration) {
         Waits.waitElementToBeClickable(driver,durationDropDown,30);
         ActionUtil.moveToElementAction(driver,durationDropDown);
+        ActionUtil.clickAction(driver,durationDropDown);
         SelectUtils.selectFromText(durationDropDown, duration);
         CommonUtils.sureWait(1);
     }
