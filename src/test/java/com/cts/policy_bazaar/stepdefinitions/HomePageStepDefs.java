@@ -29,4 +29,5 @@ public class HomePageStepDefs {
         hp.clickOnTravelInsurance();
         tp = new com.cts.policy_bazaar.pageobjects.TravelInsurancePage(driver);
     }
+
 }
