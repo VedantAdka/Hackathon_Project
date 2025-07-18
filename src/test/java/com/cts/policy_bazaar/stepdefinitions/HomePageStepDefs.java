@@ -1,5 +1,6 @@
 package com.cts.policy_bazaar.stepdefinitions;
 
+import com.cts.policy_bazaar.pageobjects.HealthInsurancePage;
 import com.cts.policy_bazaar.pageobjects.HomePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -29,4 +30,12 @@ public class HomePageStepDefs {
     public void user_is_on_car_insurance_page(){
         hp.clickCarSection();
     }
+
+    @When("I click on the Health Insurance link")
+    public void i_click_on_health_insurance_link() {
+        hp.hoverToInsuranceProducts();
+        hp.selectHealthInsurance();
+        hi = new HealthInsurancePage(driver);
+    }
+
 }

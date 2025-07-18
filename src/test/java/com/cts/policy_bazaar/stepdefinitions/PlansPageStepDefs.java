@@ -1,5 +1,6 @@
 package com.cts.policy_bazaar.stepdefinitions;
 
+import com.cts.policy_bazaar.frameworkutils.CommonUtils;
 import com.cts.policy_bazaar.frameworkutils.ReadAndWriteFromExcel;
 import com.cts.policy_bazaar.frameworkutils.TestDataContext;
 import com.cts.policy_bazaar.pageobjects.PlansPage;
@@ -15,6 +16,7 @@ public class PlansPageStepDefs {
     @When("I click on view plans")
     public void i_click_on_view_plans() {
         tp.clickOnViewPlansButton();
+        CommonUtils.sureWait(5);
         pp = new PlansPage(driver);
     }
 

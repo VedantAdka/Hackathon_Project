@@ -5,8 +5,10 @@ import com.cts.policy_bazaar.seleniumutils.ActionUtil;
 import com.cts.policy_bazaar.seleniumutils.SelectUtils;
 import com.cts.policy_bazaar.seleniumutils.Waits;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Wait;
 
@@ -78,8 +80,10 @@ public class PlansPage extends BasePage {
         Waits.waitElementToBeClickable(driver,durationDropDown,30);
         ActionUtil.moveToElementAction(driver,durationDropDown);
         ActionUtil.clickAction(driver,durationDropDown);
-        SelectUtils.selectFromText(durationDropDown, duration);
-        CommonUtils.sureWait(1);
+        Actions a=new Actions(driver);
+        a.keyDown(Keys.ARROW_DOWN).keyUp(Keys.ARROW_DOWN).keyDown(Keys.ENTER).keyUp(Keys.ENTER).perform();
+//        SelectUtils.selectFromText(durationDropDown, duration);
+//        CommonUtils.sureWait(1);
     }
 
     public void clickOnApplyButton() {

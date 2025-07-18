@@ -17,7 +17,7 @@ public class JavaScriptUtil {
 
     public static void JSscrollToElement(WebElement ele, WebDriver driver) {
         JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("arguments[0].scrollIntoView();", ele);
+        jse.executeScript("arguments[0].scrollIntoView(true);", ele);
     }
 
     public static void JSscrollBy(WebDriver driver, int x, int y) {

@@ -79,9 +79,9 @@ public class ReadAndWriteFromExcel {
             if (row == null) row = sheet.createRow(rowNum);
 
             // Column L = 11 (0-indexed)
-            XSSFCell statusCell = row.getCell(11);
+            XSSFCell statusCell = row.getCell(12);
             if (statusCell == null) {
-                statusCell = row.createCell(11);
+                statusCell = row.createCell(12);
             }
             statusCell.setCellValue(status);
 

@@ -14,5 +14,5 @@ import io.cucumber.testng.CucumberOptions;
         },
         monochrome = true
 )
-public class TravelInsuranceTestRunner extends AbstractTestNGCucumberTests {
+public class CucumberBDDTestRunner extends AbstractTestNGCucumberTests {
 }

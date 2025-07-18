@@ -22,9 +22,9 @@ public class TravelInsurancePage extends BasePage{
     private WebElement countrySelected;
     @FindBy(xpath = "//article[@class='newPq_duration_wrap']//div[1]")
     private WebElement startDate;
-    @FindBy(xpath = "//div[@class='MuiPickersDesktopDateRangeCalendar-root']/div[1]//div[@class='MuiPickersDateRangeDay-root']/div/button")
+    @FindBy(xpath = "//div[@class='MuiPickersDesktopDateRangeCalendar-root']/div[1]//div[@class='MuiPickersDateRangeDay-root']/div/button/span[1]")
     private List<WebElement> date1List;
-    @FindBy(xpath = "//div[@class='MuiPickersDesktopDateRangeCalendar-root']/div[2]//div[@class='MuiPickersDateRangeDay-root']/div/button")
+    @FindBy(xpath = "//div[@class='MuiPickersDesktopDateRangeCalendar-root']/div[2]//div[@class='MuiPickersDateRangeDay-root']/div/button/span[1]")
     private List<WebElement> date2List;
     @FindBy(xpath = "//*[@id=\"modal-root\"]/section/article/div/div/div[2]/div[3]/div/button")
     private WebElement doneButton;

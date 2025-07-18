@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Listeners(MyListenerCombined.class)
@@ -77,9 +78,12 @@ public class Scenario1_Runner {
     }
 
     @Test(priority = 2, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
-    public void validateTravelStartAndEndDate(String startDate, String endDate, String rowNumStr) {
+    public void validateTravelStartAndEndDate(String country,String startDate, String endDate, String rowNumStr) {
         try {
+            CommonUtils.sureWait(3);
+            tp.putCountryNameInSearchBox(country);
             tp.clickOnStartDate();
+            CommonUtils.sureWait(2);
             tp.pickStartDateAndEndDate(startDate, endDate);
             Assert.assertTrue(tp.getSelectedStartAndEndDate()[0].contains(startDate), "Wrong Dates selected");
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNumStr));
@@ -91,8 +95,13 @@ public class Scenario1_Runner {
     }
 
     @Test(priority = 3, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
-    public void validateSelecting2TravellersAndGoingToPlansPage(String age1, String age2, String message, String rowNumStr) {
+    public void validateSelecting2TravellersAndGoingToPlansPage(String country,String startDate, String endDate, String age1, String age2, String message, String rowNumStr) {
         try {
+            CommonUtils.sureWait(3);
+            tp.putCountryNameInSearchBox(country);
+            tp.clickOnStartDate();
+            CommonUtils.sureWait(2);
+            tp.pickStartDateAndEndDate(startDate, endDate);
             tp.clickOnAddTraveller();
             tp.clickOnNoOfTraveller();
             tp.selectAgeOfFirstStudent(age1);
@@ -121,6 +130,7 @@ public class Scenario1_Runner {
             tp.clickOnNoButton();
             tp.clickOnSubmitButton();
             tp.clickOnViewPlansButton();
+            CommonUtils.sureWait(5);
             Assert.assertTrue(pp.plansPageDisplayed(), "Did not switch to Plans Page");
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNumStr));
         } catch (Exception | AssertionError e) {
@@ -131,7 +141,7 @@ public class Scenario1_Runner {
     }
 
     @Test(priority = 5, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
-    public void validateSelectingStudentPlans(String country, String startDate, String endDate, String age1, String age2, String duration, String rowNumStr) {
+    public void validateSelectingStudentPlans(String country, String startDate, String endDate, String age1, String age2, String message, String duration, String rowNumStr) {
         try {
             tp.putCountryNameInSearchBox(country);
             tp.clickOnStartDate();
@@ -142,6 +152,7 @@ public class Scenario1_Runner {
             tp.clickOnNoButton();
             tp.clickOnSubmitButton();
             tp.clickOnViewPlansButton();
+            CommonUtils.sureWait(5);
             pp.clickOnStudentPlans();
             pp.selectBothStudents();
             pp.selectTripDuration(duration);
@@ -156,7 +167,7 @@ public class Scenario1_Runner {
     }
 
     @Test(priority = 6, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
-    public void validatedSortingPlansFromLowToHigh(String country, String startDate, String endDate, String age1, String age2, String duration, String rowNumStr) {
+    public void validatedSortingPlansFromLowToHigh(String country, String startDate, String endDate, String age1, String age2, String message, String duration, String rowNumStr) {
         try {
             tp.putCountryNameInSearchBox(country);
             tp.clickOnStartDate();
@@ -167,6 +178,7 @@ public class Scenario1_Runner {
             tp.clickOnNoButton();
             tp.clickOnSubmitButton();
             tp.clickOnViewPlansButton();
+            CommonUtils.sureWait(5);
             pp.clickOnStudentPlans();
             pp.selectBothStudents();
             pp.selectTripDuration(duration);
@@ -183,7 +195,7 @@ public class Scenario1_Runner {
     }
 
     @Test(priority = 7, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
-    public void validateGettingTop3Plans(String country, String startDate, String endDate, String age1, String age2, String duration, String rowNumStr) {
+    public void validateGettingTop3Plans(String country, String startDate, String endDate, String age1, String age2, String message, String duration, String rowNumStr) {
         try {
             tp.putCountryNameInSearchBox(country);
             tp.clickOnStartDate();
@@ -194,6 +206,10 @@ public class Scenario1_Runner {
             tp.clickOnNoButton();
             tp.clickOnSubmitButton();
             tp.clickOnViewPlansButton();
+//            List<String> widId=new ArrayList<>(driver.getWindowHandles());
+//            System.out.println(widId);
+//            driver.switchTo().window(widId.get(0));
+            CommonUtils.sureWait(5);
             pp.clickOnStudentPlans();
             pp.selectBothStudents();
             pp.selectTripDuration(duration);
@@ -215,7 +231,7 @@ public class Scenario1_Runner {
     }
 
     @Test(priority = 8, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
-    public void validateNoTravellerSelectedGivesError(String country, String startDate, String endDate, String errorMsg, String rowNumStr) {
+    public void validateNoTravellerSelectedGivesError(String country, String startDate, String endDate, String age1, String age2, String message, String duration, String errorMsg, String rowNumStr) {
         try {
             tp.putCountryNameInSearchBox(country);
             tp.clickOnStartDate();
@@ -247,7 +263,7 @@ public class Scenario1_Runner {
     }
 
     @Test(priority = 10, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
-    public void validateNotSelectingDateThrowsError(String country, String age1, String age2, String errorMsg, String rowNumStr) {
+    public void validateNotSelectingDateThrowsError(String country, String startDate, String endDate, String age1, String age2, String message, String duration, String errorMsg, String rowNumStr) {
         try {
             tp.putCountryNameInSearchBox(country);
             tp.clickOnAddTraveller();
