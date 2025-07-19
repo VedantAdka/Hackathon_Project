@@ -81,10 +81,10 @@ public class Scenario1_Runner {
     @Test(priority = 2, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
     public void validateTravelStartAndEndDate(String country,String startDate, String endDate, String rowNumStr) {
         try {
-            CommonUtils.sureWait(3);
+//            CommonUtils.sureWait(3);
             tp.putCountryNameInSearchBox(country);
             tp.clickOnStartDate();
-            CommonUtils.sureWait(2);
+//            CommonUtils.sureWait(2);
             tp.pickStartDateAndEndDate(startDate, endDate);
             Assert.assertTrue(tp.getSelectedStartAndEndDate()[0].contains(startDate), "Wrong Dates selected");
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNumStr));
@@ -98,10 +98,10 @@ public class Scenario1_Runner {
     @Test(priority = 3, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
     public void validateSelecting2TravellersAndGoingToPlansPage(String country,String startDate, String endDate, String age1, String age2, String message, String rowNumStr) {
         try {
-            CommonUtils.sureWait(3);
+//            CommonUtils.sureWait(3);
             tp.putCountryNameInSearchBox(country);
             tp.clickOnStartDate();
-            CommonUtils.sureWait(2);
+//            CommonUtils.sureWait(2);
             tp.pickStartDateAndEndDate(startDate, endDate);
             tp.clickOnAddTraveller();
             tp.clickOnNoOfTraveller();
@@ -121,7 +121,7 @@ public class Scenario1_Runner {
     @Test(priority = 4, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
     public void validateClickingOnViewPlansAndGoingToPlansPage(String country, String startDate, String endDate, String age1, String age2, String rowNumStr) {
         try {
-            CommonUtils.sureWait(5);
+//            CommonUtils.sureWait(5);
             tp.putCountryNameInSearchBox(country);
             tp.clickOnStartDate();
             tp.pickStartDateAndEndDate(startDate, endDate);
@@ -130,7 +130,7 @@ public class Scenario1_Runner {
             tp.selectAgeOfSecondStudent(age2);
             tp.clickOnNoButton();
             tp.clickOnSubmitButton();
-            CommonUtils.sureWait(10);
+//            CommonUtils.sureWait(10);
             Assert.assertTrue(pp.plansPageDisplayed(), "Did not switch to Plans Page");
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowNumStr));
         } catch (Exception | AssertionError e) {
@@ -151,7 +151,7 @@ public class Scenario1_Runner {
             tp.selectAgeOfSecondStudent(age2);
             tp.clickOnNoButton();
             tp.clickOnSubmitButton();
-            CommonUtils.sureWait(10);
+//            CommonUtils.sureWait(10);
             pp.clickOnStudentPlans();
             pp.selectBothStudents();
             pp.selectTripDuration(duration);
@@ -176,7 +176,7 @@ public class Scenario1_Runner {
             tp.selectAgeOfSecondStudent(age2);
             tp.clickOnNoButton();
             tp.clickOnSubmitButton();
-            CommonUtils.sureWait(10);
+//            CommonUtils.sureWait(10);
             pp.clickOnStudentPlans();
             pp.selectBothStudents();
             pp.selectTripDuration(duration);
@@ -206,7 +206,7 @@ public class Scenario1_Runner {
 //            List<String> widId=new ArrayList<>(driver.getWindowHandles());
 //            System.out.println(widId);
 //            driver.switchTo().window(widId.get(0));
-            CommonUtils.sureWait(5);
+//            CommonUtils.sureWait(5);
             pp.clickOnStudentPlans();
             pp.selectBothStudents();
             pp.selectTripDuration(duration);

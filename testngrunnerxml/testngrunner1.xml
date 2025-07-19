@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="MySuite">
+    <listeners>
+        <listener class-name="com.cts.policy_bazaar.testlistener.MyListenerCombined"/>
+    </listeners>
     <test name="Scenario1">
         <classes>
             <class name="com.cts.policy_bazaar.testrunner.Scenario1_Runner"/>
