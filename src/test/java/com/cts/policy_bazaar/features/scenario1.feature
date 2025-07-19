@@ -32,7 +32,6 @@ Feature: Travel Insurance Functionality
     And I select travel dates from data
     And I select traveller ages from data
     And I submit the traveller details
-    And I click on view plans
     Then I should be on the plans page
 
   Scenario: TC_001_06 - Validate selecting student plans
@@ -42,7 +41,6 @@ Feature: Travel Insurance Functionality
     And I select travel dates from data
     And I select traveller ages from data
     And I submit the traveller details
-    And I click on view plans
     And I filter by student plans from data
     Then student plans should be displayed
 
@@ -53,7 +51,6 @@ Feature: Travel Insurance Functionality
     And I select travel dates from data
     And I select traveller ages from data
     And I submit the traveller details
-    And I click on view plans
     And I filter by student plans from data
     And I sort plans from low to high
     Then plans should be sorted in ascending order
@@ -65,7 +62,6 @@ Feature: Travel Insurance Functionality
     And I select travel dates from data
     And I select traveller ages from data
     And I submit the traveller details
-    And I click on view plans
     And I filter by student plans from data
     And I sort plans from low to high
     And I fetch top 3 plans

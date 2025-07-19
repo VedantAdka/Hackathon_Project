@@ -141,8 +141,17 @@ public class TravelInsurancePage extends BasePage{
         CommonUtils.sureWait(2);
     }
     public void clickOnSubmitButton(){
-        submitButton.click();
-        CommonUtils.sureWait(2);
+        if(submitButton.getText().contains("Explore Plans")){
+            submitButton.click();
+            CommonUtils.sureWait(2);
+        }
+        else {
+            submitButton.click();
+            CommonUtils.sureWait(2);
+            JavaScriptUtil.JSscrollToElement(viewButton,driver);
+            CommonUtils.sureWait(1);
+            JavaScriptUtil.JSclick(viewButton,driver);
+        }
     }
     public String getNoOfTravellerMsg(){
         return noOfTravellerMsg.getText();
