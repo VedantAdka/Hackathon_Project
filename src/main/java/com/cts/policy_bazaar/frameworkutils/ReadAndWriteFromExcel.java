@@ -16,29 +16,22 @@ public class ReadAndWriteFromExcel {
     public Object[][] readData(Method testMethod) {
         List<Object[]> result = new ArrayList<>();
         String methodName = testMethod.getName().trim().toLowerCase();
-
         try (FileInputStream file = new FileInputStream(EXCEL_PATH)) {
             XSSFWorkbook wb = new XSSFWorkbook(file);
             XSSFSheet sheet = wb.getSheetAt(0);
             int totalParams = testMethod.getParameterCount(); // includes rowNum
             int excelParams = totalParams - 1;
             int rowCount = sheet.getPhysicalNumberOfRows();
-
             for (int r = 1; r < rowCount; r++) {
                 XSSFRow row = sheet.getRow(r);
                 if (row == null) continue;
-
                 Cell tcNameCell = row.getCell(2); // Column C
                 Cell runTypeCell = row.getCell(3); // Column D
-
                 if (tcNameCell == null || runTypeCell == null) continue;
-
                 String tcName = tcNameCell.getStringCellValue().trim().replaceAll(" ", "").toLowerCase();
                 String runType = runTypeCell.getStringCellValue().trim().toLowerCase();
-
                 if (tcName.equals(methodName) && runType.equals("y")) {
                     List<String> dataRow = new ArrayList<>();
-
                     for (int c = 4; c < 4 + excelParams; c++) {
                         XSSFCell cell = row.getCell(c);
                         if (cell == null) {
@@ -56,7 +49,6 @@ public class ReadAndWriteFromExcel {
                             }
                         }
                     }
-
                     // Add row number as final argument
                     dataRow.add(String.valueOf(r));
                     result.add(dataRow.toArray());
@@ -78,7 +70,7 @@ public class ReadAndWriteFromExcel {
             XSSFRow row = sheet.getRow(rowNum);
             if (row == null) row = sheet.createRow(rowNum);
 
-            // Column L = 11 (0-indexed)
+            // Column L = 12 (0-indexed)
             XSSFCell statusCell = row.getCell(12);
             if (statusCell == null) {
                 statusCell = row.createCell(12);

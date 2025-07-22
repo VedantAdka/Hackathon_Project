@@ -1,0 +1,9 @@
+<extentreports>
+    <configuration>
+        <encoding>utf-8</encoding>
+        <theme>dark</theme> <!-- or dark -->
+        <documentTitle>Policy Bazaar Automation Report</documentTitle>
+        <reportName>Policy Bazaar Cucumber Framework</reportName>
+        <timelineEnabled>true</timelineEnabled>
+    </configuration>
+</extentreports>

@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.Wait;
 
 import java.util.List;
 
-public class TravelInsurancePage extends BasePage{
+public class TravelInsurancePage extends BasePage {
     @FindBy(xpath = "//input[@id='country']")
     private WebElement searchBox;
     @FindBy(xpath = "//ul[@class='search-list']/li")
@@ -38,13 +38,15 @@ public class TravelInsurancePage extends BasePage{
     private WebElement cutButton;
     @FindBy(xpath = "//div/label[@for='traveller_2']")
     private WebElement noOfTraveller;
+    @FindBy(xpath = "//div[@class='header__travelProfile']/span[2]")
+    private WebElement nextPageNoOfTraveller;
     @FindBy(xpath = "//div[@id='0']/div[@id=\"divarrow_undefined\"]/div")
     private WebElement ageOfTraveller1DropDownButton;
     @FindBy(xpath = "//div[@class='options_box_wrapper__option']/label")
     private List<WebElement> ageList;
     @FindBy(xpath = "//div[@id='1']/div[@id=\"divarrow_undefined\"]/div")
     private WebElement ageOfTraveller2DropDownButton;
-    @FindBy(id="ped_no")
+    @FindBy(id = "ped_no")
     private WebElement noButton;
     @FindBy(xpath = "//section[@id='modal-root']//div[@class='pqCtaWrapper']/button")
     private WebElement submitButton;
@@ -55,67 +57,74 @@ public class TravelInsurancePage extends BasePage{
     @FindBy(xpath = "//span[@class='errorMsg newPq_errorMsg']")
     private WebElement errorMessage;
 
-    public TravelInsurancePage(WebDriver driver){
+    public TravelInsurancePage(WebDriver driver) {
         super(driver);
     }
-    public boolean putCountryNameInSearchBox(String countryName){
+
+    public boolean putCountryNameInSearchBox(String countryName) {
         CommonUtils.sureWait(2);
-        Waits.waitElementToBeClickable(driver,searchBox,30);
-        ActionUtil.moveToElementAction(driver,searchBox);
-        ActionUtil.clickAction(driver,searchBox);
-        ActionUtil.sendKeysAction(driver,countryName);
+        Waits.waitElementToBeClickable(driver, searchBox, 30);
+        ActionUtil.moveToElementAction(driver, searchBox);
+        ActionUtil.clickAction(driver, searchBox);
+        ActionUtil.sendKeysAction(driver, countryName);
         for (WebElement e : countryList) {
             if (e.getText().equalsIgnoreCase(countryName)) {
                 e.click();
                 break;
-            }
-            else if(e.getText().equalsIgnoreCase("No result found")){
+            } else if (e.getText().equalsIgnoreCase("No result found")) {
                 return false;
             }
         }
         return true;
     }
-    public String getCountryNameSelectedInSearchBox(){
+
+    public String getCountryNameSelectedInSearchBox() {
         return countrySelected.getText();
     }
-    public void clickOnStartDate(){
+
+    public void clickOnStartDate() {
         CommonUtils.sureWait(2);
-        ActionUtil.moveToElementAction(driver,startDate);
-        ActionUtil.clickAction(driver,startDate);
+        ActionUtil.moveToElementAction(driver, startDate);
+        ActionUtil.clickAction(driver, startDate);
     }
-    public void pickStartDateAndEndDate(String start, String end){
+
+    public void pickStartDateAndEndDate(String start, String end) {
         CommonUtils.sureWait(2);
         for (WebElement e : date1List) {
             if (e.getText().equalsIgnoreCase(start)) {
-                Waits.waitElementToBeClickable(driver,e,30).click();
+                Waits.waitElementToBeClickable(driver, e, 30).click();
                 break;
             }
         }
         CommonUtils.sureWait(2);
         for (WebElement e : date2List) {
             if (e.getText().equalsIgnoreCase(end)) {
-                Waits.waitElementToBeClickable(driver,e,30).click();
+                Waits.waitElementToBeClickable(driver, e, 30).click();
                 break;
             }
         }
         CommonUtils.sureWait(2);
-        Waits.waitElementToBeClickable(driver,doneButton,30).click();
+        Waits.waitElementToBeClickable(driver, doneButton, 30).click();
     }
-    public String[] getSelectedStartAndEndDate(){
-        String[] str={selectedStartDate.getText(),selectedEndDate.getText()};
+
+    public String[] getSelectedStartAndEndDate() {
+        String[] str = {selectedStartDate.getText(), selectedEndDate.getText()};
         return str;
     }
-    public void clickOnAddTraveller(){
+
+    public void clickOnAddTraveller() {
         CommonUtils.sureWait(2);
-        ActionUtil.moveToElementAction(driver,addTravellerButton);
-        ActionUtil.clickAction(driver,addTravellerButton);
+        ActionUtil.moveToElementAction(driver, addTravellerButton);
+        ActionUtil.clickAction(driver, addTravellerButton);
     }
-    public void clickOnNoOfTraveller(){
+
+    public void clickOnNoOfTraveller() {
         CommonUtils.sureWait(2);
-        ActionUtil.moveToElementAction(driver,noOfTraveller);
-        ActionUtil.clickAction(driver,noOfTraveller);
+        ActionUtil.moveToElementAction(driver, noOfTraveller);
+        ActionUtil.clickAction(driver, noOfTraveller);
     }
-    public void selectAgeOfFirstStudent(String age1){
+
+    public void selectAgeOfFirstStudent(String age1) {
         ageOfTraveller1DropDownButton.click();
         for (WebElement age : ageList) {
             if (age.getText().contains(age1)) {
@@ -125,9 +134,10 @@ public class TravelInsurancePage extends BasePage{
             }
         }
     }
-    public void selectAgeOfSecondStudent(String age2){
-        ActionUtil.moveToElementAction(driver,ageOfTraveller2DropDownButton);
-        ActionUtil.clickAction(driver,ageOfTraveller2DropDownButton);
+
+    public void selectAgeOfSecondStudent(String age2) {
+        ActionUtil.moveToElementAction(driver, ageOfTraveller2DropDownButton);
+        ActionUtil.clickAction(driver, ageOfTraveller2DropDownButton);
         for (WebElement age : ageList) {
             if (age.getText().contains(age2)) {
                 age.click();
@@ -136,38 +146,43 @@ public class TravelInsurancePage extends BasePage{
             }
         }
     }
-    public void clickOnNoButton(){
+
+    public void clickOnNoButton() {
         noButton.click();
         CommonUtils.sureWait(2);
     }
-    public void clickOnSubmitButton(){
-        if(submitButton.getText().contains("Explore Plans")){
+
+    public void clickOnSubmitButton() {
+        if (submitButton.getText().contains("Explore Plans")) {
             submitButton.click();
             CommonUtils.sureWait(2);
-        }
-        else {
+        } else {
             submitButton.click();
             CommonUtils.sureWait(2);
-            JavaScriptUtil.JSscrollToElement(viewButton,driver);
+            JavaScriptUtil.JSscrollToElement(viewButton, driver);
             CommonUtils.sureWait(1);
-            JavaScriptUtil.JSclick(viewButton,driver);
+            JavaScriptUtil.JSclick(viewButton, driver);
         }
     }
-    public String getNoOfTravellerMsg(){
-        return noOfTravellerMsg.getText();
+
+    public String getNoOfTravellerMsg() {
+        return nextPageNoOfTraveller.getText();
     }
-    public void clickOnViewPlansButton(){
-        JavaScriptUtil.JSscrollToElement(viewButton,driver);
+
+    public void clickOnViewPlansButton() {
+        JavaScriptUtil.JSscrollToElement(viewButton, driver);
         CommonUtils.sureWait(1);
-        JavaScriptUtil.JSclick(viewButton,driver);
+        JavaScriptUtil.JSclick(viewButton, driver);
     }
-    public String getErrorMessage(){
+
+    public String getErrorMessage() {
         CommonUtils.sureWait(2);
-        return Waits.waitElementToBeVisible(driver,errorMessage,30).getText();
+        return Waits.waitElementToBeVisible(driver, errorMessage, 30).getText();
     }
-    public void clickCutButton(){
-        ActionUtil.moveToElementAction(driver,cutButton);
-        ActionUtil.clickAction(driver,cutButton);
+
+    public void clickCutButton() {
+        ActionUtil.moveToElementAction(driver, cutButton);
+        ActionUtil.clickAction(driver, cutButton);
     }
 
 }
