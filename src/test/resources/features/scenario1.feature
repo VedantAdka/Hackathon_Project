@@ -15,13 +15,16 @@ Feature: Travel Insurance Functionality
   Scenario: TC_001_03 - Validate selecting travel dates
     Given I load test data for "TC_001_03"
     And I am on the travel insurance page
-    When I select travel dates from data
+    When I enter destination from data
+    And I select travel dates from data
     Then the selected start date should be correct
 
   Scenario: TC_001_04 - Validate selecting 2 travellers
     Given I load test data for "TC_001_04"
     And I am on the travel insurance page
-    When I select traveller ages from data
+    When I enter destination from data
+    And I select travel dates from data
+    And I select traveller ages from data
     And I submit the traveller details
     Then I should see traveller message
 

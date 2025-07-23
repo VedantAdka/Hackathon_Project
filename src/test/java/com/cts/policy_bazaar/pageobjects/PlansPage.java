@@ -96,13 +96,13 @@ public class PlansPage extends BasePage {
     }
 
     public void clickOnSortDropDownButton() {
-        sortButton.click();
-        CommonUtils.sureWait(1);
+        Waits.waitElementToBeClickable(driver,sortButton,30).click();
+        CommonUtils.sureWait(2);
     }
 
     public void clickOnLowToHighButton() {
         Waits.waitElementToBeClickable(driver,lowToHighButton,30).click();
-        CommonUtils.sureWait(1);
+        CommonUtils.sureWait(2);
     }
 
     public boolean lowToHighBtnSelected(){

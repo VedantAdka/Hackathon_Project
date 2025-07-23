@@ -153,7 +153,7 @@ public class TravelInsurancePage extends BasePage {
     }
 
     public void clickOnSubmitButton() {
-        if (submitButton.getText().contains("Explore Plans")) {
+        if (submitButton.getText().contains("Explore Plans") || submitButton.getText().contains("Continue")) {
             submitButton.click();
             CommonUtils.sureWait(2);
         } else {
