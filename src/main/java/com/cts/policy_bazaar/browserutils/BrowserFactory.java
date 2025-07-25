@@ -16,10 +16,12 @@ import java.net.URL;
 public class BrowserFactory {
     private static WebDriver driver;
 
+    // Opens the specified URL in the current browser instance
     public static void OpenUrl(String url) {
         driver.get(url);
     }
 
+    // Returns a WebDriver instance based on browser name and run type (cloud/local)
     public static WebDriver getBrowser(String bn, String wr, String hubip) throws Exception {
         if (wr.toLowerCase().intern().equals("cloud")) {
             driver = runRemote(bn, hubip);
@@ -29,7 +31,9 @@ public class BrowserFactory {
         return driver;
     }
 
+    // Launches browser locally with required options
     private static WebDriver runLocal(String bname) {
+        // Disable notifications and automation flags
         ChromeOptions chromeOptions = new ChromeOptions();
         EdgeOptions edgeOptions=new EdgeOptions();
         chromeOptions.addArguments("--disable-notifications");
@@ -38,6 +42,7 @@ public class BrowserFactory {
         edgeOptions.addArguments("--disable-notifications");
         edgeOptions.addArguments("--disable-blink-features=AutomationControlled");
         edgeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
+        // Choose browser for remote execution
         switch (bname.intern().toLowerCase()) {
             case "chrome":
                 driver = new ChromeDriver(chromeOptions);
@@ -55,7 +60,9 @@ public class BrowserFactory {
         return driver;
     }
 
+    // Launches browser on remote server/grid
     private static WebDriver runRemote(String bn, String ip) throws Exception {
+        // Disable notifications and automation flags
         ChromeOptions chromeOptions = new ChromeOptions();
         EdgeOptions edgeOptions=new EdgeOptions();
         chromeOptions.addArguments("--disable-notifications");
@@ -65,6 +72,7 @@ public class BrowserFactory {
         edgeOptions.addArguments("--disable-blink-features=AutomationControlled");
         edgeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
         DesiredCapabilities dc = new DesiredCapabilities();
+        // Choose browser for remote execution
         switch (bn.intern().toLowerCase()) {
             case "chrome":
                 dc.setBrowserName("chrome");
@@ -86,7 +94,9 @@ public class BrowserFactory {
         return driver;
     }
 
+    // Returns browser instance and opens the given URL
     public static WebDriver getBrowser(String bname, String url) {
+        // Disable notifications and automation flags
         ChromeOptions chromeOptions = new ChromeOptions();
         EdgeOptions edgeOptions=new EdgeOptions();
         chromeOptions.addArguments("--disable-notifications");
@@ -95,6 +105,7 @@ public class BrowserFactory {
         edgeOptions.addArguments("--disable-notifications");
         edgeOptions.addArguments("--disable-blink-features=AutomationControlled");
         edgeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
+        // Choose browser based on input
         switch (bname.intern().toLowerCase()) {
             case "chrome":
                 driver = new ChromeDriver(chromeOptions);
@@ -113,7 +124,9 @@ public class BrowserFactory {
         return driver;
     }
 
+    // Returns browser instance without opening any URL
     public static WebDriver getBrowser(String bname) {
+        // Disable notifications and automation flags
         ChromeOptions chromeOptions = new ChromeOptions();
         EdgeOptions edgeOptions=new EdgeOptions();
         chromeOptions.addArguments("--disable-notifications");
@@ -122,6 +135,7 @@ public class BrowserFactory {
         edgeOptions.addArguments("--disable-notifications");
         edgeOptions.addArguments("--disable-blink-features=AutomationControlled");
         edgeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
+        // Choose browser based on input
         switch (bname.intern().toLowerCase()) {
             case "chrome":
                 driver = new ChromeDriver(chromeOptions);

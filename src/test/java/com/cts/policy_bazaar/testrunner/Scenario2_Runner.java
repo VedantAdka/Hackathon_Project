@@ -19,7 +19,7 @@ public class Scenario2_Runner {
     CarModelPage modelPage;
     FormPage formPage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setup() throws Exception {
         String browser = PropertiesFileReader.getPropertyValue("config", "browsername");
         String url = PropertiesFileReader.getPropertyValue("config", "url");
@@ -36,7 +36,7 @@ public class Scenario2_Runner {
         formPage = new FormPage(driver);
     }
 
-    @Test(priority = 1, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 1, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Smoke","Regression"})
     public void accessCarInsurancePage(String city, String brand, String model, String fuel, String variant, String name, String phone, String rowIndex) {
         try {
             homePage.clickCarSection();
@@ -49,7 +49,7 @@ public class Scenario2_Runner {
         }
     }
 
-    @Test(priority = 2, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 2, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void clickWithoutCarNumber(String city, String brand, String model, String fuel, String variant, String name, String phone, String rowIndex) {
         try {
             homePage.clickCarSection();
@@ -63,7 +63,7 @@ public class Scenario2_Runner {
         }
     }
 
-    @Test(priority = 3, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 3, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void selectCity(String city, String brand, String model, String fuel, String variant, String name, String phone, String rowIndex) {
         try {
             homePage.clickCarSection();
@@ -78,7 +78,7 @@ public class Scenario2_Runner {
         }
     }
 
-    @Test(priority = 4, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 4, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void selectBrand(String city, String brand, String model, String fuel, String variant, String name, String phone, String rowIndex) {
         try {
             homePage.clickCarSection();
@@ -94,7 +94,7 @@ public class Scenario2_Runner {
         }
     }
 
-    @Test(priority = 5, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 5, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void selectCarModel(String city, String brand, String model, String fuel, String variant, String name, String phone, String rowIndex) {
         try {
             homePage.clickCarSection();
@@ -111,7 +111,7 @@ public class Scenario2_Runner {
         }
     }
 
-    @Test(priority = 6, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 6, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void selectFuelType(String city, String brand, String model, String fuel, String variant, String name, String phone, String rowIndex) {
         try {
             homePage.clickCarSection();
@@ -129,7 +129,7 @@ public class Scenario2_Runner {
         }
     }
 
-    @Test(priority = 7, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 7, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void selectVariant(String city, String brand, String model, String fuel, String variant, String name, String phone, String rowIndex) {
         try {
             homePage.clickCarSection();
@@ -148,7 +148,7 @@ public class Scenario2_Runner {
         }
     }
 
-    @Test(priority = 8, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 8, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void invalidPhoneCheck(String city, String brand, String model, String fuel, String variant, String name, String phone, String rowIndex) {
         try {
             homePage.clickCarSection();
@@ -172,7 +172,7 @@ public class Scenario2_Runner {
         }
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void terminate() {
         driver.quit();
     }

@@ -6,18 +6,17 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"com.cts.policy_bazaar.stepdefinitions", "com.cts.policy_bazaar.frameworkutils"},
-
+        tags = "@Regression",
         // Reporting plugins for different formats
         plugin = {
                 "pretty",
-                "html:target/cucumber_reports/cucumber.html",
-                "json:target/cucumber_reports/cucumber.json",
-                "junit:target/cucumber_reports/cucumber.xml",
-                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+                "html:target/regression_cucumber_reports/regression_cucumber.html",
+                "json:target/regression_cucumber_reports/regression_cucumber.json",
+                "junit:target/regression_cucumber_reports/regression_cucumber.xml",
         },
         // Removes unnecessary characters from console output
         monochrome = true
 )
-public class CucumberBDDTestRunner extends AbstractTestNGCucumberTests {
-        // Executes Cucumber tests using TestNG
+
+public class RegressionBDDTestRunner extends AbstractTestNGCucumberTests {
 }

@@ -10,8 +10,10 @@ import java.util.*;
 
 public class ReadAndWriteFromExcel {
 
+    // Path to the Excel file containing test data
     private static final String EXCEL_PATH = "testdata/Scenario1_2_3_TestData.xlsx";
 
+    // DataProvider method to supply test data from Excel based on test method name
     @DataProvider(name = "excelTestData")
     public Object[][] readData(Method testMethod) {
         List<Object[]> result = new ArrayList<>();
@@ -22,6 +24,8 @@ public class ReadAndWriteFromExcel {
             int totalParams = testMethod.getParameterCount(); // includes rowNum
             int excelParams = totalParams - 1;
             int rowCount = sheet.getPhysicalNumberOfRows();
+
+            // Loop through rows to match test case name and run type
             for (int r = 1; r < rowCount; r++) {
                 XSSFRow row = sheet.getRow(r);
                 if (row == null) continue;
@@ -30,8 +34,12 @@ public class ReadAndWriteFromExcel {
                 if (tcNameCell == null || runTypeCell == null) continue;
                 String tcName = tcNameCell.getStringCellValue().trim().replaceAll(" ", "").toLowerCase();
                 String runType = runTypeCell.getStringCellValue().trim().toLowerCase();
+
+                // Match method name and check if runType is 'y'
                 if (tcName.equals(methodName) && runType.equals("y")) {
                     List<String> dataRow = new ArrayList<>();
+
+                    // Read test data cells
                     for (int c = 4; c < 4 + excelParams; c++) {
                         XSSFCell cell = row.getCell(c);
                         if (cell == null) {
@@ -49,7 +57,7 @@ public class ReadAndWriteFromExcel {
                             }
                         }
                     }
-                    // Add row number as final argument
+                    // Add row number as last parameter
                     dataRow.add(String.valueOf(r));
                     result.add(dataRow.toArray());
                 }
@@ -63,6 +71,7 @@ public class ReadAndWriteFromExcel {
         return result.toArray(new Object[0][0]);
     }
 
+    // Writes test result status to a specific row in Excel
     public static void writeResult(String status, int rowNum) {
         try (FileInputStream file = new FileInputStream(EXCEL_PATH)) {
             XSSFWorkbook wb = new XSSFWorkbook(file);
@@ -70,7 +79,7 @@ public class ReadAndWriteFromExcel {
             XSSFRow row = sheet.getRow(rowNum);
             if (row == null) row = sheet.createRow(rowNum);
 
-            // Column L = 12 (0-indexed)
+            // Write status to column L (index 12)
             XSSFCell statusCell = row.getCell(12);
             if (statusCell == null) {
                 statusCell = row.createCell(12);
@@ -87,6 +96,7 @@ public class ReadAndWriteFromExcel {
         }
     }
 
+    // Writes a list of data to a specific column in a sheet named "data1"
     public static void writeDataForScenarios(List<String> data, String colName, int colNo, String path) {
         File filePath = new File(path);
         XSSFWorkbook wb;
@@ -123,6 +133,7 @@ public class ReadAndWriteFromExcel {
         }
     }
 
+    // Retrieves test data as key-value pairs for a given test case ID used in Cucumber BDD Framework
     public static Map<String, String> getTestData(String tcId) {
         Map<String, String> data = new HashMap<>();
         try {
@@ -131,6 +142,7 @@ public class ReadAndWriteFromExcel {
             Sheet sheet = workbook.getSheetAt(0);
             Row headerRow = sheet.getRow(0);
 
+            // Loop through rows to find matching test case ID
             for (int i = 1; i <= sheet.getLastRowNum(); i++) {
                 Row row = sheet.getRow(i);
                 if (row.getCell(1).getStringCellValue().equalsIgnoreCase(tcId)) {

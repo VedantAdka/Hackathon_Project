@@ -21,7 +21,7 @@ public class Scenario3_Runner {
     HealthInsurancePage hi = null;
     String bn, wr, url, remoteip;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void init() {
         try {
             bn = PropertiesFileReader.getPropertyValue("config", "browsername");
@@ -41,7 +41,7 @@ public class Scenario3_Runner {
         }
     }
 
-    @Test(priority = 0, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 0, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Smoke","Regression"})
     public void validateIfInsuranceProductIsEnabled(String dummy, String rowNum) {
         try {
             hp.hoverToInsuranceProducts();
@@ -54,7 +54,7 @@ public class Scenario3_Runner {
         }
     }
 
-    @Test(priority = 1, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 1, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void validateIfHealthInsuranceIsEnabled(String dummy, String rowNum) {
         try {
             hp.hoverToInsuranceProducts();
@@ -67,7 +67,7 @@ public class Scenario3_Runner {
         }
     }
 
-    @Test(priority = 2, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 2, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Smoke","Regression"})
     public void validateIfWeSwitchedToHealthInsurancePage(String pageTitle, String rowNum) {
         try {
             hp.hoverToInsuranceProducts();
@@ -82,7 +82,7 @@ public class Scenario3_Runner {
         }
     }
 
-    @Test(priority = 3, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 3, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void validateRetrievingHealthInsuranceData(String dummy, String rowNum) {
         try {
             hp.hoverToInsuranceProducts();
@@ -110,7 +110,7 @@ public class Scenario3_Runner {
         }
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void end() {
         CommonUtils.sureWait(2);
         driver.quit();

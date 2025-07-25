@@ -6,8 +6,12 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class PropertiesFileReader {
+
+    // Reads a property value from a .properties file located in the testdata folder
     public static String getPropertyValue(String filename,String key) throws FileNotFoundException {
         String filepath="testdata/"+filename+".properties";
+
+        // Try-with-resources to auto-close FileInputStream
         try(FileInputStream fis=new FileInputStream(filepath)){
             Properties p=new Properties();
             p.load(fis);

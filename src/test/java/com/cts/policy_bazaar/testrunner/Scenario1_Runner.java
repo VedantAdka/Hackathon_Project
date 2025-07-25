@@ -29,7 +29,7 @@ public class Scenario1_Runner {
     String url = null;
     String remoteip = null;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void init() {
         try {
             bn = PropertiesFileReader.getPropertyValue("config", "browsername");
@@ -49,7 +49,7 @@ public class Scenario1_Runner {
         }
     }
 
-    @Test(priority = 0, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 0, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Smoke","Regression"})
     public void validateAccessingTravelInsurancePage(String rowNumStr) {
         try {
             String actual = driver.getTitle();
@@ -63,7 +63,7 @@ public class Scenario1_Runner {
         }
     }
 
-    @Test(priority = 1, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 1, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void validateSelectingDestination(String country, String rowNumStr) {
         try {
             CommonUtils.sureWait(3);
@@ -78,7 +78,7 @@ public class Scenario1_Runner {
         }
     }
 
-    @Test(priority = 2, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 2, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void validateTravelStartAndEndDate(String country,String startDate, String endDate, String rowNumStr) {
         try {
 //            CommonUtils.sureWait(3);
@@ -95,7 +95,7 @@ public class Scenario1_Runner {
         }
     }
 
-    @Test(priority = 3, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 3, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void validateSelecting2TravellersAndGoingToPlansPage(String country,String startDate, String endDate, String age1, String age2, String message, String rowNumStr) {
         try {
 //            CommonUtils.sureWait(3);
@@ -118,7 +118,7 @@ public class Scenario1_Runner {
         }
     }
 
-    @Test(priority = 4, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 4, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Smoke","Regression"})
     public void validateClickingOnViewPlansAndGoingToPlansPage(String country, String startDate, String endDate, String age1, String age2, String rowNumStr) {
         try {
 //            CommonUtils.sureWait(5);
@@ -140,7 +140,7 @@ public class Scenario1_Runner {
         }
     }
 
-    @Test(priority = 5, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 5, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void validateSelectingStudentPlans(String country, String startDate, String endDate, String age1, String age2, String message, String duration, String rowNumStr) {
         try {
             tp.putCountryNameInSearchBox(country);
@@ -165,7 +165,7 @@ public class Scenario1_Runner {
         }
     }
 
-    @Test(priority = 6, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 6, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void validatedSortingPlansFromLowToHigh(String country, String startDate, String endDate, String age1, String age2, String message, String duration, String rowNumStr) {
         try {
             tp.putCountryNameInSearchBox(country);
@@ -192,7 +192,7 @@ public class Scenario1_Runner {
         }
     }
 
-    @Test(priority = 7, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 7, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void validateGettingTop3Plans(String country, String startDate, String endDate, String age1, String age2, String message, String duration, String rowNumStr) {
         try {
             tp.putCountryNameInSearchBox(country);
@@ -227,7 +227,7 @@ public class Scenario1_Runner {
         }
     }
 
-    @Test(priority = 8, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 8, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void validateNoTravellerSelectedGivesError(String country, String startDate, String endDate, String age1, String age2, String message, String duration, String errorMsg, String rowNumStr) {
         try {
             tp.putCountryNameInSearchBox(country);
@@ -245,7 +245,7 @@ public class Scenario1_Runner {
         }
     }
 
-    @Test(priority = 9, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 9, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void validateInvalidCountryNameShowsNoResult(String country, String rowNumStr) {
         try {
             boolean res = tp.putCountryNameInSearchBox(country);
@@ -259,7 +259,7 @@ public class Scenario1_Runner {
         }
     }
 
-    @Test(priority = 10, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class)
+    @Test(priority = 10, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Regression"})
     public void validateNotSelectingDateThrowsError(String country, String startDate, String endDate, String age1, String age2, String message, String duration, String errorMsg, String rowNumStr) {
         try {
             tp.putCountryNameInSearchBox(country);
@@ -281,7 +281,7 @@ public class Scenario1_Runner {
         }
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void end() {
         CommonUtils.sureWait(3);
         driver.quit();
