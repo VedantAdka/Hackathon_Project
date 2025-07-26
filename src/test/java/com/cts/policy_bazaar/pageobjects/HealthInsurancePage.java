@@ -26,20 +26,27 @@ public class HealthInsurancePage extends BasePage{
     @FindBy(xpath = "//div[@class='cover-price']/div[@class='label-value'][2]/div[2]")
     private List<WebElement> startAtAmountList;
 
+    // Constructor to initialize WebDriver
     public HealthInsurancePage(WebDriver driver){
         super(driver);
     }
+
+    // Closes the sticky footer popup using JavaScript
     public void clickOnCloseButton(){
         JavaScriptUtil.JSscrollToElement(closeBtn,driver);
         CommonUtils.sureWait(2);
         JavaScriptUtil.JSclick(closeBtn,driver);
     }
+
+    // Clicks on the "View More Plans" button
     public void clickOnViewMorePlansButton(){
         CommonUtils.sureWait(1);
         ActionUtil.moveToElementAction(driver,viewMorePlansBtn);
         CommonUtils.sureWait(1);
         ActionUtil.clickAction(driver,viewMorePlansBtn);
     }
+
+    // Clicks on each "View More" button in the list
     public void clickOnListOfViewMorePlansButtons(){
         for(WebElement i:listOfViewMorePlans){
             Waits.waitElementToBeVisible(driver,i,30);
@@ -47,6 +54,8 @@ public class HealthInsurancePage extends BasePage{
             Waits.waitElementToBeClickable(driver,i,30).click();
         }
     }
+
+    // Returns a list of all insurance plan names
     public List<String> getInsuranceNames(){
         List<String> insuranceNames=new ArrayList<>();
         for(WebElement i: insuranceListNames){
@@ -54,6 +63,8 @@ public class HealthInsurancePage extends BasePage{
         }
         return insuranceNames;
     }
+
+    // Returns a list of all cover amounts
     public List<String> getCoverAmount(){
         List<String> coverAmount=new ArrayList<>();
         for(WebElement i: coverAmountList){
@@ -61,6 +72,8 @@ public class HealthInsurancePage extends BasePage{
         }
         return coverAmount;
     }
+
+    // Returns a list of all starting prices
     public List<String> getStartAtAmount(){
         List<String> startAtAmount =new ArrayList<>();
         for(WebElement i: startAtAmountList){

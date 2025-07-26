@@ -57,10 +57,12 @@ public class TravelInsurancePage extends BasePage {
     @FindBy(xpath = "//span[@class='errorMsg newPq_errorMsg']")
     private WebElement errorMessage;
 
+    // Constructor
     public TravelInsurancePage(WebDriver driver) {
         super(driver);
     }
 
+    // Enters country name in search box and selects it from the list
     public boolean putCountryNameInSearchBox(String countryName) {
         CommonUtils.sureWait(2);
         Waits.waitElementToBeClickable(driver, searchBox, 30);
@@ -78,16 +80,19 @@ public class TravelInsurancePage extends BasePage {
         return true;
     }
 
+    // Returns selected country name
     public String getCountryNameSelectedInSearchBox() {
         return countrySelected.getText();
     }
 
+    // Clicks on start date field
     public void clickOnStartDate() {
         CommonUtils.sureWait(2);
         ActionUtil.moveToElementAction(driver, startDate);
         ActionUtil.clickAction(driver, startDate);
     }
 
+    // Picks start and end dates from calendar
     public void pickStartDateAndEndDate(String start, String end) {
         CommonUtils.sureWait(2);
         for (WebElement e : date1List) {
@@ -107,23 +112,27 @@ public class TravelInsurancePage extends BasePage {
         Waits.waitElementToBeClickable(driver, doneButton, 30).click();
     }
 
+    // Returns selected start and end dates
     public String[] getSelectedStartAndEndDate() {
         String[] str = {selectedStartDate.getText(), selectedEndDate.getText()};
         return str;
     }
 
+    // Clicks on Add Traveller button
     public void clickOnAddTraveller() {
         CommonUtils.sureWait(2);
         ActionUtil.moveToElementAction(driver, addTravellerButton);
         ActionUtil.clickAction(driver, addTravellerButton);
     }
 
+    // Selects number of travellers
     public void clickOnNoOfTraveller() {
         CommonUtils.sureWait(2);
         ActionUtil.moveToElementAction(driver, noOfTraveller);
         ActionUtil.clickAction(driver, noOfTraveller);
     }
 
+    // Selects age for first traveller
     public void selectAgeOfFirstStudent(String age1) {
         ageOfTraveller1DropDownButton.click();
         for (WebElement age : ageList) {
@@ -135,6 +144,7 @@ public class TravelInsurancePage extends BasePage {
         }
     }
 
+    // Selects age for second traveller
     public void selectAgeOfSecondStudent(String age2) {
         ActionUtil.moveToElementAction(driver, ageOfTraveller2DropDownButton);
         ActionUtil.clickAction(driver, ageOfTraveller2DropDownButton);
@@ -147,11 +157,13 @@ public class TravelInsurancePage extends BasePage {
         }
     }
 
+    // Clicks on 'No' button for pre-existing diseases
     public void clickOnNoButton() {
         noButton.click();
         CommonUtils.sureWait(2);
     }
 
+    // Clicks on Submit button and handles conditional view button
     public void clickOnSubmitButton() {
         if (submitButton.getText().contains("Explore Plans") || submitButton.getText().contains("Continue")) {
             submitButton.click();
@@ -165,21 +177,25 @@ public class TravelInsurancePage extends BasePage {
         }
     }
 
+    // Returns number of travellers message from next page
     public String getNoOfTravellerMsg() {
         return nextPageNoOfTraveller.getText();
     }
 
+    // Clicks on View Plans button using JavaScript
     public void clickOnViewPlansButton() {
         JavaScriptUtil.JSscrollToElement(viewButton, driver);
         CommonUtils.sureWait(1);
         JavaScriptUtil.JSclick(viewButton, driver);
     }
 
+    // Returns error message if any
     public String getErrorMessage() {
         CommonUtils.sureWait(2);
         return Waits.waitElementToBeVisible(driver, errorMessage, 30).getText();
     }
 
+    // Closes form using cut button
     public void clickCutButton() {
         ActionUtil.moveToElementAction(driver, cutButton);
         ActionUtil.clickAction(driver, cutButton);

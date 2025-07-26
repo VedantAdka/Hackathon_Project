@@ -42,13 +42,17 @@ public class PlansPage extends BasePage {
     @FindBy(xpath = "//span[@class='premiumPlanPrice']")
     private List<WebElement> insurancePrice;
 
+    // Constructor
     public PlansPage(WebDriver driver) {
         super(driver);
     }
 
+    // Checks if the plans page is displayed
     public boolean plansPageDisplayed(){
         return showPlansText.isDisplayed();
     }
+
+    // Clicks on the Student Plan option
     public void clickOnStudentPlans() {
         if(studentPlanButton.isDisplayed()) {
             CommonUtils.sureWait(2);
@@ -69,6 +73,7 @@ public class PlansPage extends BasePage {
         }
     }
 
+    // Selects both student age options
     public void selectBothStudents() {
         student1.click();
         CommonUtils.sureWait(1);
@@ -76,6 +81,7 @@ public class PlansPage extends BasePage {
         CommonUtils.sureWait(1);
     }
 
+    // Selects trip duration using keyboard actions
     public void selectTripDuration(String duration) {
         Waits.waitElementToBeClickable(driver,durationDropDown,30);
         ActionUtil.moveToElementAction(driver,durationDropDown);
@@ -86,30 +92,36 @@ public class PlansPage extends BasePage {
 //        CommonUtils.sureWait(1);
     }
 
+    // Clicks the Apply button
     public void clickOnApplyButton() {
         applyButton.click();
     }
 
+    // Checks if student plans are displayed
     public boolean studentsPlansDisplayed(){
         CommonUtils.sureWait(2);
         return Waits.waitElementToBeVisible(driver,showsStudentPlanText,30).isDisplayed();
     }
 
+    // Opens the sort dropdown
     public void clickOnSortDropDownButton() {
         Waits.waitElementToBeClickable(driver,sortButton,30).click();
         CommonUtils.sureWait(2);
     }
 
+    // Selects the "Low to High" sorting option
     public void clickOnLowToHighButton() {
         Waits.waitElementToBeClickable(driver,lowToHighButton,30).click();
         CommonUtils.sureWait(2);
     }
 
+    // Checks if "Low to High" is selected
     public boolean lowToHighBtnSelected(){
         CommonUtils.sureWait(2);
         return Waits.waitElementToBeVisible(driver,lowToHighButton,30).isSelected();
     }
 
+    // Returns names of top 3 insurance companies
     public List<String> getInsuranceCompanyName(){
         List<String> companyNames = new ArrayList<>();
         for (int i = 0; i < 3 && i < insuranceCompanyName.size(); i++) {
@@ -118,6 +130,7 @@ public class PlansPage extends BasePage {
         return companyNames;
     }
 
+    // Returns prices of top 3 insurance plans
     public List<String> getInsurancePrice(){
         List<String> insuranceAmount = new ArrayList<>();
         for (int i = 0; i < 3 && i < insurancePrice.size(); i++) {

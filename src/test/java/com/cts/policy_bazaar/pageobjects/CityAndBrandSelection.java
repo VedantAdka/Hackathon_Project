@@ -14,6 +14,8 @@ public class CityAndBrandSelection extends BasePage {
 
     WebDriverWait wait;
 
+
+    // Constructor initializes WebDriverWait
     public CityAndBrandSelection(WebDriver driver) {
         super(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -31,11 +33,13 @@ public class CityAndBrandSelection extends BasePage {
     @FindBy(xpath = "//ul/li/span[2]")
     List<WebElement> brandOptions;
 
+    // Checks if the "Select City" section is visible
     public boolean isCityTextVisible() {
         CommonUtils.sureWait(2);
         return wait.until(ExpectedConditions.visibilityOf(selectCityText)).isDisplayed();
     }
 
+    // Selects a city from the list based on the given name
     public void selectCity(String city) {
         CommonUtils.sureWait(2);
         for (WebElement c : cityOptions) {
@@ -47,11 +51,13 @@ public class CityAndBrandSelection extends BasePage {
         CommonUtils.sureWait(2);
     }
 
+    // Checks if the "Select Car Brand" section is visible
     public boolean isCarBrandSectionDisplayed() {
         CommonUtils.sureWait(2);
         return wait.until(ExpectedConditions.visibilityOf(selectCarBrandText)).isDisplayed();
     }
 
+    // Selects a car brand from the list based on the given name
     public void selectBrand(String brand) {
         CommonUtils.sureWait(2);
         for (WebElement b : brandOptions) {

@@ -18,6 +18,7 @@ public class FormPage extends BasePage {
     JavascriptExecutor js;
     Actions act;
 
+    // Constructor initializes WebDriver utilities
     public FormPage(WebDriver driver) {
         super(driver);
         act= new Actions(driver);
@@ -40,6 +41,7 @@ public class FormPage extends BasePage {
     @FindBy(xpath = "//button[@class='primaryBtnV2 width-100']")
     WebElement submitButton;
 
+    // Checks if the form page is displayed
     public boolean isFormPageDisplayed() {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -49,7 +51,7 @@ public class FormPage extends BasePage {
         }
     }
 
-
+    // Enters name and mobile number into the form fields
     public void enterDetails(String name, String mobile) {
         CommonUtils.sureWait(2);
         wait.until(ExpectedConditions.elementToBeClickable(nameInput)).clear();
@@ -60,6 +62,7 @@ public class FormPage extends BasePage {
         CommonUtils.sureWait(2);
     }
 
+    // Checks if the submit button is enabled
     public boolean isSubmitEnabled() {
         CommonUtils.sureWait(2);
         return submitButton.isEnabled();

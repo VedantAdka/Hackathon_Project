@@ -21,28 +21,41 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//div[@class='ruby-row']/div[3]/h3")
     private  WebElement healthInsurance;
 
+    // Constructor initializes WebDriver and Actions
     public HomePage(WebDriver driver){
         super(driver);
         actions = new Actions(driver);
     }
+
+    // Clicks on the Travel Insurance section
     public void clickOnTravelInsurance(){
         travelInsurance.click();
     }
+
+    // Clicks on the Car section and clears cookies
     public void clickCarSection() {
         actions.moveToElement(carSection).click().perform();
         driver.manage().deleteAllCookies();
         CommonUtils.sureWait(2);
     }
+
+    // Checks if the Insurance Products menu is enabled
     public boolean insuranceProductsIsEnabled(){
         return insuranceProduct.isEnabled();
     }
+
+    // Hovers over the Insurance Products menu
     public void hoverToInsuranceProducts(){
         CommonUtils.sureWait(1);
         ActionUtil.moveToElementAction(driver,insuranceProduct);
     }
+
+    // Checks if the Health Insurance option is enabled
     public boolean healthInsuranceIsEnabled(){
         return healthInsurance.isEnabled();
     }
+
+    // Selects the Health Insurance option
     public void selectHealthInsurance(){
         CommonUtils.sureWait(1);
         ActionUtil.moveToElementAction(driver,healthInsurance);

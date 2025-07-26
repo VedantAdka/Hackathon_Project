@@ -13,6 +13,7 @@ public class CarInsuranceLandingPage extends BasePage {
 
     WebDriverWait wait;
 
+    // Constructor initializes WebDriver and WebDriverWait
     public CarInsuranceLandingPage(WebDriver driver) {
         super(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -24,11 +25,13 @@ public class CarInsuranceLandingPage extends BasePage {
     @FindBy(xpath = "//span[text()='Click here ']")
     WebElement clickHereLink;
 
+    // Checks if the car registration textbox is visible
     public boolean isCarRegTextBoxDisplayed() {
         CommonUtils.sureWait(2);
         return wait.until(ExpectedConditions.visibilityOf(regNoTextBox)).isDisplayed();
     }
 
+    // Clicks the "Click here" link without entering car number
     public void clickClickHereWithoutCarNumber() {
         CommonUtils.sureWait(2);
         wait.until(ExpectedConditions.elementToBeClickable(clickHereLink)).click();

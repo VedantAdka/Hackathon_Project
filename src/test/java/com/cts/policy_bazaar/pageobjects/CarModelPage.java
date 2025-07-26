@@ -18,6 +18,7 @@ public class CarModelPage extends BasePage {
     Actions actions;
     JavascriptExecutor js;
 
+    // Constructor initializes WebDriver utilities
     public CarModelPage(WebDriver driver) {
         super(driver);
         actions = new Actions(driver);
@@ -43,6 +44,7 @@ public class CarModelPage extends BasePage {
     @FindBy(xpath = "//ul[@class='gridList slideToLeft mb-24']/li")
     List<WebElement> variants;
 
+    // Searches for a car model and selects "Grand i10" from the list
     public void searchModel(String model) {
         CommonUtils.sureWait(2);
         searchModelInput.sendKeys(model);
@@ -55,6 +57,7 @@ public class CarModelPage extends BasePage {
         CommonUtils.sureWait(2);
     }
 
+    // Selects a fuel type from the available options
     public void selectFuel(String fuel) {
         CommonUtils.sureWait(2);
         for (WebElement f : fuelTypes) {
@@ -66,6 +69,7 @@ public class CarModelPage extends BasePage {
         CommonUtils.sureWait(2);
     }
 
+    // Selects a car variant from the available options
     public void selectVariant(String variant) {
         CommonUtils.sureWait(2);
         for (WebElement v : variants) {
@@ -77,16 +81,19 @@ public class CarModelPage extends BasePage {
         CommonUtils.sureWait(2);
     }
 
+    // Checks if the car model search input is visible
     public boolean isSearchModelInputDisplayed() {
         CommonUtils.sureWait(2);
         return wait.until(ExpectedConditions.visibilityOf(searchModelInput)).isDisplayed();
     }
 
+    // Checks if the fuel type header is visible
     public boolean isFuelTypeHeaderDisplayed() {
         CommonUtils.sureWait(2);
         return wait.until(ExpectedConditions.visibilityOf(fuelTypeHeader)).isDisplayed();
     }
 
+    // Checks if the variant header is visible
     public boolean isVariantHeaderDisplayed() {
         CommonUtils.sureWait(2);
         return wait.until(ExpectedConditions.visibilityOf(variantHeader)).isDisplayed();
