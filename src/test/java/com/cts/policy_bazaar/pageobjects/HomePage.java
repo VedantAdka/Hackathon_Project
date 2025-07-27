@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends BasePage{
-    Actions actions;
+
     @FindBy(xpath = "//div[7]//div[@class='shadowHandlerBox']")
     private WebElement travelInsurance;
 
@@ -21,10 +21,9 @@ public class HomePage extends BasePage{
     @FindBy(xpath = "//div[@class='ruby-row']/div[3]/h3")
     private  WebElement healthInsurance;
 
-    // Constructor initializes WebDriver and Actions
+    // Constructor initializes WebDriver
     public HomePage(WebDriver driver){
         super(driver);
-        actions = new Actions(driver);
     }
 
     // Clicks on the Travel Insurance section
@@ -34,7 +33,8 @@ public class HomePage extends BasePage{
 
     // Clicks on the Car section and clears cookies
     public void clickCarSection() {
-        actions.moveToElement(carSection).click().perform();
+        ActionUtil.moveToElementAction(driver,carSection);
+        ActionUtil.clickAction(driver,carSection);
         driver.manage().deleteAllCookies();
         CommonUtils.sureWait(2);
     }

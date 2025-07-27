@@ -1,6 +1,6 @@
 package com.cts.policy_bazaar.stepdefinitions;
 
-import com.cts.policy_bazaar.frameworkutils.TestDataContext;
+import com.cts.policy_bazaar.stepdefinitions.TestDataContext;
 import com.cts.policy_bazaar.pageobjects.FormPage;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

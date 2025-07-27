@@ -62,12 +62,10 @@ public class ReadAndWriteFromExcel {
                     result.add(dataRow.toArray());
                 }
             }
-
-            wb.close();
+            //wb.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return result.toArray(new Object[0][0]);
     }
 
@@ -90,7 +88,7 @@ public class ReadAndWriteFromExcel {
                 wb.write(out);
             }
 
-            wb.close();
+            //wb.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

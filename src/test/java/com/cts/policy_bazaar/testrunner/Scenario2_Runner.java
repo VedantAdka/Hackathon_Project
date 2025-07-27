@@ -9,6 +9,7 @@ import com.cts.policy_bazaar.testlistener.MyListenerCombined;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
 @Listeners(MyListenerCombined.class)
 public class Scenario2_Runner {
 
@@ -36,7 +37,7 @@ public class Scenario2_Runner {
         formPage = new FormPage(driver);
     }
 
-    @Test(priority = 1, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Smoke","Regression"})
+    @Test(priority = 1, dataProvider = "excelTestData", dataProviderClass = ReadAndWriteFromExcel.class, groups = {"Smoke", "Regression"})
     public void accessCarInsurancePage(String city, String brand, String model, String fuel, String variant, String name, String phone, String rowIndex) {
         try {
             homePage.clickCarSection();
@@ -44,7 +45,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
-            ScreenShotUtil.takeScreenShot(driver,"accessCarInsurancePage");
+            ScreenShotUtil.takeScreenShot(driver, "accessCarInsurancePage");
             Assert.fail(e.getMessage());
         }
     }
@@ -58,7 +59,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
-            ScreenShotUtil.takeScreenShot(driver,"clickWithoutCarNumber");
+            ScreenShotUtil.takeScreenShot(driver, "clickWithoutCarNumber");
             Assert.fail(e.getMessage());
         }
     }
@@ -73,7 +74,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
-            ScreenShotUtil.takeScreenShot(driver,"selectCity");
+            ScreenShotUtil.takeScreenShot(driver, "selectCity");
             Assert.fail(e.getMessage());
         }
     }
@@ -89,7 +90,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
-            ScreenShotUtil.takeScreenShot(driver,"selectBrand");
+            ScreenShotUtil.takeScreenShot(driver, "selectBrand");
             Assert.fail(e.getMessage());
         }
     }
@@ -106,7 +107,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
-            ScreenShotUtil.takeScreenShot(driver,"selectCarModel");
+            ScreenShotUtil.takeScreenShot(driver, "selectCarModel");
             Assert.fail(e.getMessage());
         }
     }
@@ -124,7 +125,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
-            ScreenShotUtil.takeScreenShot(driver,"selectFuelType");
+            ScreenShotUtil.takeScreenShot(driver, "selectFuelType");
             Assert.fail(e.getMessage());
         }
     }
@@ -143,7 +144,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
-            ScreenShotUtil.takeScreenShot(driver,"selectVariant");
+            ScreenShotUtil.takeScreenShot(driver, "selectVariant");
             Assert.fail(e.getMessage());
         }
     }
@@ -167,7 +168,7 @@ public class Scenario2_Runner {
             ReadAndWriteFromExcel.writeResult("PASS", Integer.parseInt(rowIndex));
         } catch (Exception e) {
             ReadAndWriteFromExcel.writeResult("FAIL", Integer.parseInt(rowIndex));
-            ScreenShotUtil.takeScreenShot(driver,"invalidPhoneCheck");
+            ScreenShotUtil.takeScreenShot(driver, "invalidPhoneCheck");
             Assert.fail(e.getMessage());
         }
     }

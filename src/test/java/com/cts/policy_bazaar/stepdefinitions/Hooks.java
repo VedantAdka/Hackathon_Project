@@ -16,14 +16,18 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
+
+// Hooks class to manage setup and teardown for Cucumber scenarios
 public class Hooks {
 
+    // Declaring WebDriver and page object instances
     public static WebDriver driver;
     public static HomePage hp;
     public static TravelInsurancePage tp;
     public static PlansPage pp;
     public static HealthInsurancePage hi;
 
+    // Runs before each scenario to initialize browser and page objects
     @Before
     public void init() throws Exception {
         String bn = PropertiesFileReader.getPropertyValue("config", "browsername");
@@ -40,6 +44,7 @@ public class Hooks {
         hi = new HealthInsurancePage(driver);
     }
 
+    // Runs after each scenario to take screenshot if failed and close browser
     @After
     public void end(Scenario scenario) {
         try {

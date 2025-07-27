@@ -1,7 +1,7 @@
 package com.cts.policy_bazaar.stepdefinitions;
 
 import com.cts.policy_bazaar.frameworkutils.ReadAndWriteFromExcel;
-import com.cts.policy_bazaar.frameworkutils.TestDataContext;
+import com.cts.policy_bazaar.stepdefinitions.TestDataContext;
 import io.cucumber.java.en.*;
 import org.testng.Assert;
 

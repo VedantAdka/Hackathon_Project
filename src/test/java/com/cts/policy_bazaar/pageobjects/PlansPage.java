@@ -105,6 +105,7 @@ public class PlansPage extends BasePage {
 
     // Opens the sort dropdown
     public void clickOnSortDropDownButton() {
+        CommonUtils.sureWait(2);
         Waits.waitElementToBeClickable(driver,sortButton,30).click();
         CommonUtils.sureWait(2);
     }

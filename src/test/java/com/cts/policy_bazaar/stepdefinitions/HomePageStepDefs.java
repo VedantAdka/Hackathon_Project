@@ -1,6 +1,7 @@
 package com.cts.policy_bazaar.stepdefinitions;
 
 import com.cts.policy_bazaar.pageobjects.HealthInsurancePage;
+import com.cts.policy_bazaar.pageobjects.TravelInsurancePage;
 import com.cts.policy_bazaar.pageobjects.HomePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -17,14 +18,14 @@ public class HomePageStepDefs {
     @When("I click on the Travel Insurance link")
     public void i_click_on_travel_insurance() {
         hp.clickOnTravelInsurance();
-        tp = new com.cts.policy_bazaar.pageobjects.TravelInsurancePage(driver);
+        tp = new TravelInsurancePage(driver);
     }
 
     @Given("I am on the travel insurance page")
     public void i_am_on_travel_insurance_page_direct() {
         hp = new HomePage(driver);
         hp.clickOnTravelInsurance();
-        tp = new com.cts.policy_bazaar.pageobjects.TravelInsurancePage(driver);
+        tp = new TravelInsurancePage(driver);
     }
     @Given("user is on the car insurance page")
     public void user_is_on_car_insurance_page(){
