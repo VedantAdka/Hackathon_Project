@@ -130,9 +130,11 @@ public class BrowserFactory {
         ChromeOptions chromeOptions = new ChromeOptions();
         EdgeOptions edgeOptions=new EdgeOptions();
         chromeOptions.addArguments("--disable-notifications");
+        chromeOptions.addArguments("--incognito");
         chromeOptions.addArguments("--disable-blink-features=AutomationControlled");
         chromeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
         edgeOptions.addArguments("--disable-notifications");
+        edgeOptions.addArguments("--incognito");
         edgeOptions.addArguments("--disable-blink-features=AutomationControlled");
         edgeOptions.setExperimentalOption("excludeSwitches", new String[] { "enable-automation" });
         // Choose browser based on input
